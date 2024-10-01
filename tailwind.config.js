@@ -31,6 +31,8 @@ module.exports = {
         placeholder: "#797979",
         disabled: "#A9A9A9",
         border: "#ACACAC",
+        yellow: "#FF8C00",
+        input: "#DBDBDB",
       },
       fontFamily: {
         latoBold: ["var(--lato-bold)", "sans-serif"],
@@ -55,6 +57,7 @@ module.exports = {
         medium: 500,
       },
       boxShadow: {
+        map: "7px 8px 20px 1px rgba(34, 34, 34, 0.30)",
         button:
           "36px 40px 15px 0px rgba(255, 165, 0, 0.00), 23px 26px 14px 0px rgba(255, 165, 0, 0.01), 13px 14px 12px 0px rgba(255, 165, 0, 0.05), 6px 6px 9px 0px rgba(255, 165, 0, 0.09), 1px 2px 5px 0px rgba(255, 165, 0, 0.10)",
       },

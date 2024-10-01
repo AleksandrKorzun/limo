@@ -1,6 +1,6 @@
 import Container from "@/components/container";
-import CustomButton from "@/components/customButton";
-import ScrollButton from "@/components/scrollButton";
+import CustomButton from "@/components/ui/customButton";
+import ScrollButton from "@/components/ui/scrollButton";
 import React from "react";
 
 const SectionHero = () => {

@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import Script from "next/script";
 
 const lato = localFont({
   src: "./fonts/lato/Lato-Regular.ttf",
@@ -30,6 +31,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        {/* <Script src="/scripts/map/index.js" />
+        <script
+          async
+          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_REACT_APP_MAP_API_KEY}&callback=console.debug&libraries=maps,marker&v=beta`}
+        ></script> */}
+      </head>
       <body
         className={`${latoBlack.variable} ${lato.variable} ${latoBold.variable} ${EbSemiBold.variable} antialiased`}
       >

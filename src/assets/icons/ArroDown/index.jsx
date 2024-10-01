@@ -16,8 +16,8 @@ const ArrowDownIcon = (props) => (
     <path
       d="M1.00024 15.5732L16.4886 30.6041"
       stroke="white"
-      //   stroke-width="1.5"
-      //   stroke-linecap="round"
+      // stroke-width="1.5"
+      // stroke-linecap="round"
     />
   </svg>
 );

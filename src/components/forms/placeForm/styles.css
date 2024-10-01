@@ -1,0 +1,14 @@
+.react-datepicker__header--custom {
+  background: #dbdbdb;
+  border-bottom: none;
+}
+.react-datepicker__month-container {
+  background: #dbdbdb;
+}
+.react-datepicker--time-only {
+  background: #dbdbdb;
+  width: 100%;
+}
+.react-datepicker__time-container {
+  display: none;
+}

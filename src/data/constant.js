@@ -56,18 +56,24 @@ export const FLEET = [
     title: "Premium Sedan",
     desc: "A luxurious sedan, perfect for individual or paired trips. A combination of comfort and elegance in every move.",
     specification: "*For individual and corporate clients.",
+    passengers: "Up to 3 Passangers",
+    suitcase: "3 medium suitcases",
   },
   {
     img: "/images/desc/car2.png",
     title: "Premium SUV",
     desc: "A spacious SUV with enhanced features for comfortable longer trips and seamless transfers for groups of up to 5 people.",
     specification: "*For groups and family trips.",
+    passengers: "Up to 5 Passangers",
+    suitcase: "3 big and 2 medium suitcases",
   },
   {
     img: "/images/desc/car3.png",
     title: "Premium Bus (14 people)",
     desc: "A comfortable and stylish minibus, ideal for corporate groups and small delegations. Up to 14 people with maximum comfort.",
     specification: "*For larger groups and corporate events.",
+    passengers: "Up to 14 Passangers",
+    suitcase: "5 big suitcases",
   },
 ];
 
@@ -156,4 +162,105 @@ export const SOCIAL = [
   { title: "Linkedin", value: "" },
   { title: "Instagram", value: "" },
   { title: "Facebook", value: "" },
+];
+
+export const BOOKING_STEPS = [
+  { num: 1, desc: "Enter Ride Details", title: "Ride Info" },
+  { num: 2, desc: "Choose a Vehicle", title: "Vehicles Filter" },
+  { num: 3, desc: "Contact Details", title: "Contact details" },
+];
+
+export const BOOKING_FORM = [
+  {
+    label: "Type of transfer",
+    type: "select",
+    placeholder: "Point to Point",
+    option: [
+      { title: "Point to Point", value: "Point to Point" },
+      { title: "Airport Transfer", value: "Airport Transfer" },
+      { title: "Arrival", value: "Arrival" },
+      { title: "Departure", value: "Departure" },
+      { title: "Hourly / As Directed", value: "Hourly / As Directed" },
+    ],
+  },
+  {
+    label: "Pick-Up Date",
+    type: "date",
+    placeholder: "Select date",
+  },
+  {
+    label: "Pick-Up Time",
+    type: "time",
+    placeholder: "Select time",
+  },
+  {
+    label: "Pick-Up Location",
+    type: "text",
+    placeholder: "Select",
+    autoComplete: true,
+  },
+  {
+    label: "Drop-Off Location",
+    type: "text",
+    placeholder: "Select",
+    autoComplete: true,
+  },
+];
+
+export const VEHICLES_FORM = [
+  {
+    label: "Passengers",
+    type: "select",
+    placeholder: "1",
+    options: [
+      { title: 1, value: 1 },
+      { title: 2, value: 2 },
+      { title: 3, value: 3 },
+      { title: 4, value: 4 },
+      { title: 5, value: 5 },
+      { title: 6, value: 6 },
+      { title: 7, value: 7 },
+      { title: 8, value: 8 },
+      { title: 9, value: 9 },
+      { title: 10, value: 10 },
+      { title: 11, value: 11 },
+      { title: 12, value: 12 },
+      { title: 13, value: 13 },
+      { title: 14, value: 14 },
+    ],
+  },
+  {
+    label: "Suitcases",
+    type: "select",
+    placeholder: "1",
+    options: [
+      { title: 1, value: 1 },
+      { title: 2, value: 2 },
+      { title: 3, value: 3 },
+      { title: 4, value: 4 },
+      { title: 5, value: 5 },
+    ],
+  },
+  {
+    label: "Child seat",
+    type: "select",
+    placeholder: "1",
+    options: [
+      { title: 1, value: 1 },
+      { title: 2, value: 2 },
+      { title: 3, value: 3 },
+      { title: 4, value: 4 },
+      { title: 5, value: 5 },
+    ],
+  },
+  {
+    label: "Type",
+    type: "select",
+    placeholder: "1",
+    options: [
+      { title: "Premium Sedan", value: "Premium Sedan" },
+      { title: "Premium SUV", value: "Premium SUV" },
+      { title: "Premium Bus", value: "Premium Bus" },
+    ],
+  },
 ];

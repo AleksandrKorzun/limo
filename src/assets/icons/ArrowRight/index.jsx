@@ -5,6 +5,7 @@ const ArrowRightIcon = (props) => (
     height="48"
     viewBox="0 0 48 48"
     fill="none"
+    {...props}
   >
     {/* <circle cx="24" cy="24" r="24" fill="#D1D1D1" fill-opacity="0.5" /> */}
     <path

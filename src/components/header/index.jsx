@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import CustomButton from "../customButton";
+import CustomButton from "../ui/customButton";
 import { Link } from "react-scroll"; // Правильний імпорт
 import { NAV } from "@/data/constant";
 

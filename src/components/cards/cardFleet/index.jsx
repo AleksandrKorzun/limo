@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import Subtitle from "../../ui/subtitle";
 import Text from "../../ui/text";
-import CustomButton from "../../customButton";
+import CustomButton from "../../ui/customButton";
 
 const CardFleet = ({ img, title, desc, specification }) => {
   return (

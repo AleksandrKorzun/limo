@@ -1,7 +1,7 @@
 "use client";
 import CardReview from "@/components/cards/cardReview";
 import Container from "@/components/container";
-import CustomButton from "@/components/customButton";
+import CustomButton from "@/components/ui/customButton";
 import Text from "@/components/ui/text";
 import Title from "@/components/ui/title";
 import { REVIEW } from "@/data/constant";
