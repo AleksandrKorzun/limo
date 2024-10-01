@@ -52,4 +52,6 @@ const AutoCompleteInput = forwardRef(
   }
 );
 
+AutoCompleteInput.displayName = "AutoCompleteInput";
+
 export default AutoCompleteInput;

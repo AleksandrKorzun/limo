@@ -29,7 +29,13 @@ const VehicleForm = ({ step }) => {
         <ul className="flex flex-col justify-between gap-[32px] w-full">
           {FLEET.map(({ img, passengers, title, suitcase }) => (
             <li key={passengers} className="flex items-center">
-              <Image src={img} width={225} height={128} className="mr-[32px]" />
+              <Image
+                src={img}
+                width={225}
+                height={128}
+                className="mr-[32px]"
+                alt="car"
+              />
               <div className="flex justify-between items-center w-full">
                 <div>
                   <h3 className="font-latoBlack text-medium text-main mb-[24px]">
