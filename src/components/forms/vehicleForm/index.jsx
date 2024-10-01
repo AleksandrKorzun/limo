@@ -22,6 +22,7 @@ const VehicleForm = ({ step }) => {
               options={options}
               placeholder={placeholder}
               type="select"
+              key={label}
             />
           ))}
         </div>

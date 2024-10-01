@@ -258,6 +258,7 @@ const PlaceForm = ({
                 </div>
                 {values.pickUpLocation?.map((loc, idx) => (
                   <AutoCompleteInput
+                    key={idx}
                     label={!idx && "Pick-Up Location"}
                     placeholder="Select"
                     value={startLocation}
