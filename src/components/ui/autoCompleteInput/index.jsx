@@ -1,7 +1,10 @@
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 
 const AutoCompleteInput = forwardRef(
-  ({ label, type, placeholder, value, onChange, className, isLoaded }, ref) => {
+  (
+    { label, type, placeholder, value, onChange, className, isLoaded, error },
+    ref
+  ) => {
     const [autoComplete, setAutoComplete] = useState(null);
     const [inputValue, setInputValue] = useState(value); // Initialize with the passed value
     const placeAutoCompleteRef = useRef(null);
@@ -47,6 +50,9 @@ const AutoCompleteInput = forwardRef(
           className={`p-[8px] bg-input rounded-[8px] `}
           autoComplete="off"
         />
+        {error && label && !inputValue && (
+          <p className="text-red-600">{error}</p>
+        )}
       </div>
     );
   }

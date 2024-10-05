@@ -264,3 +264,26 @@ export const VEHICLES_FORM = [
     ],
   },
 ];
+
+export const CONTACT_FORM = [
+  {
+    label: "First name",
+    type: "text",
+    placeholder: "Select",
+  },
+  {
+    label: "Second name",
+    type: "text",
+    placeholder: "Select",
+  },
+  {
+    label: "Email address",
+    type: "text",
+    placeholder: "Select",
+  },
+  {
+    label: "Phone number",
+    type: "text",
+    placeholder: "Select",
+  },
+];

@@ -18,6 +18,7 @@ import ArrowDownSmallIcon from "@/assets/icons/ArrowDownSmall";
 import ArrowUpIcon from "@/assets/icons/ArrowUp";
 import ArrowDownCalendarIcon from "@/assets/icons/ArrowDownCalendar";
 import { Formik, useFormik } from "formik";
+import { placeFormSchema } from "../schemes/placeFormSchema";
 
 const months = [
   "Jan",
@@ -40,6 +41,7 @@ const months = [
 
 const PlaceForm = ({
   step,
+  setStep,
   mapRef,
   isLoaded,
   showRoute,
@@ -123,16 +125,24 @@ const PlaceForm = ({
           typeTransfer: "",
           date: "",
           time: "",
-          pickUpLocation: [""],
+          pickUpLocation: "",
           dropOffLocation: "",
+          wayPoints: [],
         }}
+        validationSchema={placeFormSchema}
         onSubmit={(values) => {
           localStorage.setItem("place", JSON.stringify(values));
           onSubmitForm();
         }}
       >
-        {({ handleSubmit, handleChange, values, setFieldValue }) => {
-          console.log("values", values);
+        {({
+          handleSubmit,
+          handleChange,
+          values,
+          setFieldValue,
+          validateForm,
+          errors,
+        }) => {
           return (
             <form className="flex flex-col gap-[40px] desc:w-[50%]">
               <p className="text-main font-latoMedium text-medium leading-[130%] pb-[8px] border-b-[1px] border-b-solid border-b-[#D8D8D8]">
@@ -256,47 +266,47 @@ const PlaceForm = ({
                   </DatePicker>
                   <ArrowDownSmallIcon className="absolute right-[8px] top-[44px]" />
                 </div>
-                {values.pickUpLocation?.map((loc, idx) => (
+                <AutoCompleteInput
+                  key="Pick-Up Location"
+                  label={"Pick-Up Location"}
+                  placeholder="Select"
+                  value={startLocation}
+                  onChange={(v) => {
+                    setFieldValue("pickUpLocation", v);
+
+                    showRoute(v, values.dropOffLocation, values.wayPoints);
+                  }}
+                  type="text"
+                  className="w-full"
+                  isLoaded={isLoaded}
+                  error={errors.pickUpLocation}
+                />
+                {values.wayPoints.map((wayPoint, idx) => (
                   <AutoCompleteInput
-                    key={idx}
-                    label={!idx && "Pick-Up Location"}
-                    placeholder="Select"
-                    value={startLocation}
-                    onChange={(v) => {
-                      if (!idx) {
-                        setStartLocation(v, idx);
-                      }
-                      setFieldValue(
-                        "pickUpLocation",
-                        values.pickUpLocation.map((location, index) =>
-                          index === idx ? v : location
-                        )
-                      );
-                      if (idx === 1) {
-                        showRoute(startLocation, values.pickUpLocation[1]);
-                      }
-                      if (idx > 1) {
-                        showRoute(
-                          startLocation,
-                          values.pickUpLocation[-1],
-                          values.pickUpLocation.slice(1, -1)
-                        );
-                      }
-                    }}
                     type="text"
                     className="w-full"
                     isLoaded={isLoaded}
+                    key="Way points Location"
+                    placeholder="Select"
+                    value={startLocation}
+                    onChange={(v) => {
+                      setFieldValue(
+                        "wayPoints",
+                        values.wayPoints.map((w, i) => (i === idx ? v : w))
+                      );
+                      showRoute(
+                        values.pickUpLocation,
+                        values.dropOffLocation,
+                        values.wayPoints.map((w, i) => (i === idx ? v : w))
+                      );
+                    }}
                   />
                 ))}
-
                 <button
                   className="font-latoBold text-small"
                   type="button"
                   onClick={() =>
-                    setFieldValue("pickUpLocation", [
-                      ...values.pickUpLocation,
-                      "",
-                    ])
+                    setFieldValue("wayPoints", [...values?.wayPoints, ""])
                   }
                 >
                   + Add stop
@@ -307,25 +317,30 @@ const PlaceForm = ({
                   placeholder="Select"
                   value={endLocation}
                   onChange={(v) => {
-                    console.log("first", v);
-                    setEndLocation(v);
-                    showRoute(startLocation, v);
+                    setFieldValue("dropOffLocation", v);
+                    showRoute(values.pickUpLocation, v, values.wayPoints);
                   }}
                   type="text"
                   className="w-full"
                   isLoaded={isLoaded}
+                  error={errors.dropOffLocation}
                 />
               </div>
               <CustomButton
                 text="Choose a vehicle"
                 type="button"
-                onClick={handleSubmit}
+                onClick={async () => {
+                  const formErr = await validateForm();
+                  console.log("errors", formErr);
+                  handleSubmit();
+                  setStep(2);
+                }}
               />
             </form>
           );
         }}
       </Formik>
-      <div className="desc:w-[50%] hidden desc:block shadow-map rounded-xl">
+      <div className="desc:w-[50%] max-h-[576px] hidden desc:block shadow-map rounded-xl">
         {isLoaded ? (
           <div ref={mapRef} className="desc:h-[432px] rounded-t-[16px]"></div>
         ) : (

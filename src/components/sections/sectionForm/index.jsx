@@ -16,6 +16,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import PlaceForm from "@/components/forms/placeForm";
 import VehicleForm from "@/components/forms/vehicleForm";
+import ContactForm from "@/components/forms/contactForm";
+import Final from "@/components/forms/final";
 
 const libraries = ["core", "map", "places", "marker"];
 
@@ -99,6 +101,7 @@ const SectionForm = () => {
           <PlaceForm
             step={step}
             mapRef={mapRef}
+            setStep={setStep}
             isLoaded={isLoaded}
             showRoute={showRoute}
             distance={distance}
@@ -108,8 +111,13 @@ const SectionForm = () => {
         );
         break;
       case 2:
-        return <VehicleForm step={step} />;
-        return null;
+        return <VehicleForm step={step} setStep={setStep} />;
+        break;
+      case 3:
+        return <ContactForm step={step} setStep={setStep} />;
+        break;
+      case 4:
+        return <Final setStep={setStep} />;
         break;
 
       default:
@@ -121,7 +129,7 @@ const SectionForm = () => {
       <Container className>
         <Title text="Booking Form" />
         <div className="bg-backgroundSecondary desc:px-[112px] desc:py-[56px]">
-          <Stepper step={step} />
+          {step !== 4 && <Stepper step={step} />}
           {getForm()}
         </div>
       </Container>
