@@ -1,9 +1,28 @@
 import CustomButton from "@/components/ui/customButton";
 import React from "react";
+import { motion } from "framer-motion";
+
+const container = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+};
 
 const Final = ({ setStep }) => {
   return (
-    <div className="flex flex-col items-center justify-center desc:min-h-[555px]">
+    <motion.div
+      variants={container}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      className="flex flex-col items-center justify-center desc:min-h-[555px]"
+    >
       <h3 className="font-latoBold text-big text-main mb-[24px] text-center">
         Thank You! Your Booking is Confirmed
       </h3>
@@ -17,7 +36,7 @@ const Final = ({ setStep }) => {
         onClick={() => setStep(1)}
         className="w-[192px]"
       />
-    </div>
+    </motion.div>
   );
 };
 

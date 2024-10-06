@@ -53,10 +53,10 @@ const Header = () => {
               className="flex justify-center items-center w-[83px] h-[40px] font-latoBold text-small text-main leading-3"
             >
               <Link
-                to="about"
+                to={item}
                 spy={true}
                 smooth={true}
-                offset={-100}
+                offset={-190}
                 duration={1000}
               >
                 {item}
@@ -65,7 +65,11 @@ const Header = () => {
           ))}
         </ul>
       </nav>
-      <CustomButton text={"Book a Transfer"} className="p-[8px]" />
+      <CustomButton
+        text={"Book a Transfer"}
+        className="p-[8px]"
+        name="booked"
+      />
     </header>
   );
 };

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 
 const Select = ({
@@ -9,6 +10,7 @@ const Select = ({
   options,
   className,
 }) => {
+  console.log("value", value);
   return (
     <div className={`flex flex-col gap-[8px] w-[100%]  ${className}`}>
       <label className="font-latoBold text-small leading-[24px] text-main">

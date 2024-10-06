@@ -1,3 +1,4 @@
+"use client";
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 
 const AutoCompleteInput = forwardRef(

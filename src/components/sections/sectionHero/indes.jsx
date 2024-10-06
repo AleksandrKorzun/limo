@@ -1,3 +1,4 @@
+"use client";
 import Container from "@/components/container";
 import CustomButton from "@/components/ui/customButton";
 import ScrollButton from "@/components/ui/scrollButton";
@@ -16,6 +17,7 @@ const SectionHero = () => {
         <div className="flex justify-center">
           <CustomButton
             text="Book a Transfer"
+            name="booked"
             className="mobV:w-full mobH:w-full tabV:w-[192px] tabH:w-[192px] desc:w-[192px] tabV:mx-auto tabH:mx-auto"
           />
         </div>

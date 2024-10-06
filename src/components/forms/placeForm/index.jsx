@@ -19,6 +19,7 @@ import ArrowUpIcon from "@/assets/icons/ArrowUp";
 import ArrowDownCalendarIcon from "@/assets/icons/ArrowDownCalendar";
 import { Formik, useFormik } from "formik";
 import { placeFormSchema } from "../schemes/placeFormSchema";
+import { motion } from "framer-motion";
 
 const months = [
   "Jan",
@@ -34,10 +35,17 @@ const months = [
   "Nov",
   "Dec",
 ];
-// const hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-// const minutes = [0, 15, 30, 45];
-// const timeValue = ["PM", "AM"];
-// const libraries = ["core", "map", "places", "marker"];
+const container = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+};
 
 const PlaceForm = ({
   step,
@@ -48,11 +56,10 @@ const PlaceForm = ({
   duration,
   distance,
   onSubmitForm,
+  form,
+  setForm,
 }) => {
-  const [startDate, setStartDate] = useState(null);
   const [time, setTime] = useState(null);
-  const [startLocation, setStartLocation] = useState("");
-  const [endLocation, setEndLocation] = useState("");
 
   const [isOpen, setIsOpen] = useState(false);
   const [customTime, setCustomTime] = useState({
@@ -115,19 +122,33 @@ const PlaceForm = ({
     );
     newTime.setMinutes(customTime.minutes);
     setTime(newTime);
+    setForm((prev) => ({
+      ...prev,
+      time: newTime.toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+      }),
+    }));
     setIsOpen(false);
   };
 
   return (
-    <div className="flex gap-[32px]">
+    <motion.div
+      className="flex gap-[32px]"
+      variants={container}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+    >
       <Formik
         initialValues={{
-          typeTransfer: "",
+          type_transfer: "",
           date: "",
           time: "",
-          pickUpLocation: "",
-          dropOffLocation: "",
-          wayPoints: [],
+          pick_up_location: "",
+          drop_off_location: "",
+          way_points: [],
         }}
         validationSchema={placeFormSchema}
         onSubmit={(values) => {
@@ -153,9 +174,13 @@ const PlaceForm = ({
                   label="Type of transfer"
                   placeholder="Point to Point"
                   type="select"
-                  name="typeTransfer"
-                  onChange={(v) => setFieldValue("typeTransfer", v)}
-                  value={values.typeTransfer}
+                  name="type_transfer"
+                  onChange={(v) => {
+                    console.log("v", v);
+                    setFieldValue("type_transfer", v);
+                    setForm((prev) => ({ ...prev, type_transfer: v }));
+                  }}
+                  value={form.type_transfer}
                   options={BOOKING_FORM[0].option}
                 />
 
@@ -166,7 +191,7 @@ const PlaceForm = ({
                   <DatePicker
                     months={months}
                     placeholderText="Select date"
-                    selected={values.date}
+                    selected={form.date}
                     renderCustomHeader={({
                       date,
                       decreaseMonth,
@@ -186,6 +211,10 @@ const PlaceForm = ({
                     )}
                     onChange={(date) => {
                       setFieldValue("date", date);
+                      setForm((prev) => ({
+                        ...prev,
+                        date: date.toLocaleString().split(",")[0],
+                      }));
                     }}
                     className="p-[8px] bg-input rounded-[8px] w-full"
                   />
@@ -270,34 +299,41 @@ const PlaceForm = ({
                   key="Pick-Up Location"
                   label={"Pick-Up Location"}
                   placeholder="Select"
-                  value={startLocation}
+                  value={form.pick_up_location}
                   onChange={(v) => {
-                    setFieldValue("pickUpLocation", v);
+                    setFieldValue("pick_up_location", v);
+                    setForm((prev) => ({ ...prev, pick_up_location: v }));
 
-                    showRoute(v, values.dropOffLocation, values.wayPoints);
+                    showRoute(v, values.drop_off_location, values.way_points);
                   }}
                   type="text"
                   className="w-full"
                   isLoaded={isLoaded}
-                  error={errors.pickUpLocation}
+                  error={errors.pick_up_location}
                 />
-                {values.wayPoints.map((wayPoint, idx) => (
+                {values.way_points.map((wayPoint, idx) => (
                   <AutoCompleteInput
                     type="text"
                     className="w-full"
                     isLoaded={isLoaded}
                     key="Way points Location"
                     placeholder="Select"
-                    value={startLocation}
+                    value={form.way_points[idx]}
                     onChange={(v) => {
                       setFieldValue(
-                        "wayPoints",
-                        values.wayPoints.map((w, i) => (i === idx ? v : w))
+                        "way_points",
+                        values.way_points.map((w, i) => (i === idx ? v : w))
                       );
+                      setForm((prev) => ({
+                        ...prev,
+                        way_points: values.way_points.map((w, i) =>
+                          i === idx ? v : w
+                        ),
+                      }));
                       showRoute(
-                        values.pickUpLocation,
-                        values.dropOffLocation,
-                        values.wayPoints.map((w, i) => (i === idx ? v : w))
+                        values.pick_up_location,
+                        values.drop_off_location,
+                        values.way_points.map((w, i) => (i === idx ? v : w))
                       );
                     }}
                   />
@@ -306,7 +342,7 @@ const PlaceForm = ({
                   className="font-latoBold text-small"
                   type="button"
                   onClick={() =>
-                    setFieldValue("wayPoints", [...values?.wayPoints, ""])
+                    setFieldValue("way_points", [...values?.way_points, ""])
                   }
                 >
                   + Add stop
@@ -315,15 +351,19 @@ const PlaceForm = ({
                 <AutoCompleteInput
                   label="Drop-Off Location"
                   placeholder="Select"
-                  value={endLocation}
+                  value={form.drop_off_location}
                   onChange={(v) => {
-                    setFieldValue("dropOffLocation", v);
-                    showRoute(values.pickUpLocation, v, values.wayPoints);
+                    setFieldValue("drop_off_location", v);
+                    setForm((prev) => ({
+                      ...prev,
+                      drop_off_location: v,
+                    }));
+                    showRoute(values.pick_up_location, v, values.way_points);
                   }}
                   type="text"
                   className="w-full"
                   isLoaded={isLoaded}
-                  error={errors.dropOffLocation}
+                  error={errors.drop_off_location}
                 />
               </div>
               <CustomButton
@@ -363,7 +403,7 @@ const PlaceForm = ({
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

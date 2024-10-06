@@ -76,6 +76,7 @@ const SectionReview = () => {
             />
             <CustomButton
               text="Book a Transfer"
+              name="booked"
               className="w-full desc:w-[192px] desc:mt-auto"
             />
           </div>

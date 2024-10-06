@@ -8,6 +8,7 @@ import Container from "../container";
 const Footer = () => {
   return (
     <div className="w-full bg-footer px-[24px] pt-[64px] pb-[32px] rounded-tr-[24px] rounded-tl-[24px]">
+      <a id="Contact" className="invisible"></a>
       <Container>
         <nav className="mx-auto pb-[32px] border-b-[1px] border-b-solid border-background">
           <ul className="flex justify-center items-center gap-[32px] desc:gap-[48px]">

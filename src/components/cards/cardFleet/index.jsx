@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import Subtitle from "../../ui/subtitle";
@@ -17,7 +18,7 @@ const CardFleet = ({ img, title, desc, specification }) => {
       <Subtitle text={title} />
       <Text text={desc} />
       <Text text={specification} className="font-black mt-[16px] mb-[32px]" />
-      <CustomButton text={"Book a Transfer"} className="w-full" />
+      <CustomButton text={"Book a Transfer"} className="w-full" name="booked" />
     </div>
   );
 };

@@ -1,3 +1,4 @@
+"use client";
 import EditIcon from "@/assets/icons/Edit";
 import PassengerIcon from "@/assets/icons/Passenger";
 import SuitcaseIcon from "@/assets/icons/Suicase";
@@ -8,10 +9,29 @@ import { BOOKING_STEPS, FLEET, VEHICLES_FORM } from "@/data/constant";
 import { Formik } from "formik";
 import Image from "next/image";
 import React from "react";
+import { motion } from "framer-motion";
 
-const ContactForm = ({ step, setStep }) => {
+const container = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const ContactForm = ({ step, setStep, form, setForm }) => {
   return (
-    <div className="flex justify-between">
+    <motion.div
+      className="flex justify-between"
+      variants={container}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+    >
       <Formik
         initialValues={{
           first_name: "",
@@ -34,20 +54,22 @@ const ContactForm = ({ step, setStep }) => {
                   label="First Name"
                   type="text"
                   placeholder="Enter your first name"
-                  values={values.first_name}
-                  onChange={() =>
-                    setFieldValue("first_name", values.first_name)
-                  }
+                  values={form.first_name}
+                  onChange={(v) => {
+                    setFieldValue("first_name", v);
+                    setForm({ ...form, first_name: v });
+                  }}
                   className="w-[100%]"
                 />
                 <Input
                   label="Last Name"
                   type="text"
                   placeholder="Enter your first name"
-                  values={values.first_name}
-                  onChange={() =>
-                    setFieldValue("first_name", values.first_name)
-                  }
+                  values={form.second_name}
+                  onChange={(v) => {
+                    setFieldValue("second_name", v);
+                    setForm({ ...form, second_name: v });
+                  }}
                   className="w-[100%]"
                 />
               </div>
@@ -56,20 +78,28 @@ const ContactForm = ({ step, setStep }) => {
                   label="Email adress"
                   type="text"
                   placeholder="Enter your first name"
-                  values={values.first_name}
-                  onChange={() =>
-                    setFieldValue("first_name", values.first_name)
-                  }
+                  values={form.email_address}
+                  onChange={(v) => {
+                    setFieldValue("email_address", v);
+                    setForm((prev) => ({
+                      ...prev,
+                      email_address: v,
+                    }));
+                  }}
                   className="w-[100%]"
                 />
                 <Input
                   label="Phone number"
                   type="text"
                   placeholder="Enter your first name"
-                  values={values.first_name}
-                  onChange={() =>
-                    setFieldValue("first_name", values.first_name)
-                  }
+                  values={form.phone_number}
+                  onChange={(v) => {
+                    setFieldValue("phone_number", v);
+                    setForm((prev) => ({
+                      ...prev,
+                      phone_number: v,
+                    }));
+                  }}
                   className="w-[100%]"
                 />
               </div>
@@ -77,19 +107,33 @@ const ContactForm = ({ step, setStep }) => {
                 <label className="font-latoBold text-small leading-[24px] text-main">
                   Comment
                 </label>
-                <textarea className="p-[8px] bg-input rounded-[8px] outline-none" />
+                <textarea
+                  className="p-[8px] bg-input rounded-[8px] outline-none"
+                  value={form.comments}
+                  onChange={(e) => {
+                    setFieldValue("comments", e.target.value);
+                    setForm((prev) => ({
+                      ...prev,
+                      comments: e.target.value,
+                    }));
+                  }}
+                />
               </div>
               <div className="flex items-center gap-[16px]">
                 <div className="flex items-center">
                   <input
                     type="checkbox"
-                    value={values.contact_by_email}
-                    onChange={() =>
+                    value={form.contact_by_email}
+                    onChange={() => {
                       setFieldValue(
                         "contact_by_email",
                         !values.contact_by_email
-                      )
-                    }
+                      );
+                      setForm((prev) => ({
+                        ...prev,
+                        contact_by_email: values.contact_by_email,
+                      }));
+                    }}
                     className={`w-[20px] h-[20px] mr-[10px] border-black border-solid border-[2px] rounded-[8px] focus:ring-input dark:ring-offset-gray-800 focus:ring-2 ${
                       values.contact_by_email
                         ? "bg-[#FFA500] text-white"
@@ -103,7 +147,7 @@ const ContactForm = ({ step, setStep }) => {
                 <div className="flex items-center">
                   <input
                     type="checkbox"
-                    value={values.contact_by_phone}
+                    value={form.contact_by_phone}
                     onChange={() =>
                       setFieldValue(
                         "contact_by_email",
@@ -127,7 +171,7 @@ const ContactForm = ({ step, setStep }) => {
               <CustomButton
                 text="Go Back"
                 onClick={() => setStep(2)}
-                className="w-[192px] border-[2px] border-main border-solid bg-transparent shadow-none"
+                className="w-[192px] border-[2px] border-main border-solid bg-transparent shadow-none hover:bg-main hover:text-white"
               />
               <CustomButton
                 text="Enter Contact Details"
@@ -149,34 +193,46 @@ const ContactForm = ({ step, setStep }) => {
           <p className="font-latoBold text-small text-main">
             Type of transfer:
           </p>
-          <p className="font-latoRegular text-small text-disabled">1</p>
+          <p className="font-latoRegular text-small text-disabled">
+            {form.type_transfer}
+          </p>
         </div>
         <div className="flex justify-between items-center gap-[8px] mb-[24px]">
           <p className="font-latoBold text-small text-main">Pick-Up Date:</p>
-          <p className="font-latoRegular text-small text-disabled">1</p>
+          <p className="font-latoRegular text-small text-disabled">
+            {form.date}
+          </p>
         </div>
         <div className="flex justify-between items-center gap-[8px] mb-[24px]">
           <p className="font-latoBold text-small text-main">Pick-Up Time:</p>
-          <p className="font-latoRegular text-small text-disabled">1</p>
+          <p className="font-latoRegular text-small text-disabled">
+            {form.time}
+          </p>
         </div>
         <div className="flex justify-between items-center gap-[8px] mb-[24px]">
           <p className="font-latoBold text-small text-main">
             Pick-Up Location:
           </p>
-          <p className="font-latoRegular text-small text-disabled">Type</p>
+          <p className="font-latoRegular text-small text-disabled">
+            {form.pick_up_location}
+          </p>
         </div>
         <div className="flex justify-between items-center gap-[8px]">
           <p className="font-latoBold text-small text-main mb-[24px]">
             Drop-Off Location:
           </p>
-          <p className="font-latoRegular text-small text-disabled">Car</p>
+          <p className="font-latoRegular text-small text-disabled">
+            {form.drop_off_location}
+          </p>
         </div>
         <div className="flex justify-between items-center gap-[8px]">
           <p className="font-latoBold text-small text-main">Vehicle:</p>
-          <p className="font-latoRegular text-small text-disabled">Car</p>
+          <p className="font-latoRegular text-small text-disabled">
+            {form.type}
+          </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -212,6 +212,7 @@ export const VEHICLES_FORM = [
     label: "Passengers",
     type: "select",
     placeholder: "1",
+    name: "passengers",
     options: [
       { title: 1, value: 1 },
       { title: 2, value: 2 },
@@ -233,6 +234,7 @@ export const VEHICLES_FORM = [
     label: "Suitcases",
     type: "select",
     placeholder: "1",
+    name: "suitcase",
     options: [
       { title: 1, value: 1 },
       { title: 2, value: 2 },
@@ -244,6 +246,7 @@ export const VEHICLES_FORM = [
   {
     label: "Child seat",
     type: "select",
+    name: "child_seat",
     placeholder: "1",
     options: [
       { title: 1, value: 1 },
@@ -256,6 +259,7 @@ export const VEHICLES_FORM = [
   {
     label: "Type",
     type: "select",
+    name: "type",
     placeholder: "1",
     options: [
       { title: "Premium Sedan", value: "Premium Sedan" },

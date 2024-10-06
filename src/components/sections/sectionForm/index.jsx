@@ -1,23 +1,17 @@
 "use client";
-import ArrowLeftIcon from "@/assets/icons/ArrowLeft";
-import ArrowRightIcon from "@/assets/icons/ArrowRight";
-import CalendarIcon from "@/assets/icons/Calendar";
-import AutoCompleteInput from "@/components/ui/autoCompleteInput";
+
 import Container from "@/components/container";
-import CustomButton from "@/components/ui/customButton";
-import Input from "@/components/ui/fieldInput";
-import Select from "@/components/ui/select";
+
 import Stepper from "@/components/stepper";
 import Title from "@/components/ui/title";
-import { BOOKING_FORM, BOOKING_STEPS } from "@/data/constant";
 import { useJsApiLoader } from "@react-google-maps/api";
 import React, { useEffect, useRef, useState } from "react";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import PlaceForm from "@/components/forms/placeForm";
 import VehicleForm from "@/components/forms/vehicleForm";
 import ContactForm from "@/components/forms/contactForm";
 import Final from "@/components/forms/final";
+import ReviewForm from "@/components/forms/rewievForm";
 
 const libraries = ["core", "map", "places", "marker"];
 
@@ -29,6 +23,27 @@ const SectionForm = () => {
   const [directionsRenderer, setDirectionsRenderer] = useState(null);
   const [distance, setDistance] = useState("");
   const [duration, setDuration] = useState("");
+
+  const [form, setForm] = useState({
+    pick_up_location: "",
+    drop_off_location: "",
+    type_transfer: "Point to Point",
+    date: "",
+    time: "",
+    way_points: [],
+    passengers: 1,
+    suitcase: 1,
+    child_seat: 1,
+    car: "",
+    type: "",
+    first_name: "",
+    second_name: "",
+    email_address: "",
+    phone_number: "",
+    comments: "",
+    contact_by_phone: false,
+    contact_by_email: false,
+  });
 
   const { isLoaded } = useJsApiLoader({
     id: "black-limo",
@@ -60,9 +75,6 @@ const SectionForm = () => {
   }, [isLoaded]);
 
   const showRoute = async (startLocation, endLocation, waypoints = []) => {
-    console.log("startLocation", startLocation);
-    console.log("endLocation", endLocation);
-    console.log("waypoints", waypoints);
     if (!startLocation || !endLocation) return;
 
     const request = {
@@ -93,7 +105,7 @@ const SectionForm = () => {
     setStep((prev) => (prev !== 3 ? prev + 1 : prev));
     console.log("v", v);
   };
-
+  console.log("form", form);
   const getForm = () => {
     switch (step) {
       case 1:
@@ -106,18 +118,46 @@ const SectionForm = () => {
             showRoute={showRoute}
             distance={distance}
             duration={duration}
+            form={form}
             onSubmitForm={onSubmitForm}
+            setForm={setForm}
           />
         );
         break;
       case 2:
-        return <VehicleForm step={step} setStep={setStep} />;
+        return (
+          <VehicleForm
+            step={step}
+            setStep={setStep}
+            form={form}
+            setForm={setForm}
+          />
+        );
         break;
       case 3:
-        return <ContactForm step={step} setStep={setStep} />;
+        return (
+          <ContactForm
+            step={step}
+            setStep={setStep}
+            form={form}
+            setForm={setForm}
+          />
+        );
         break;
       case 4:
-        return <Final setStep={setStep} />;
+        return (
+          <ReviewForm
+            step={step}
+            setStep={setStep}
+            form={form}
+            setForm={setForm}
+            duration={duration}
+            distance={distance}
+          />
+        );
+        break;
+      case 5:
+        return <Final setStep={setStep} form={form} setForm={setForm} />;
         break;
 
       default:
@@ -127,6 +167,7 @@ const SectionForm = () => {
   return (
     <section>
       <Container className>
+        <a id="book-form" className="invisible"></a>
         <Title text="Booking Form" />
         <div className="bg-backgroundSecondary desc:px-[112px] desc:py-[56px]">
           {step !== 4 && <Stepper step={step} />}
