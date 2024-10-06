@@ -15,10 +15,10 @@ const Footer = () => {
             {NAV.map((item, index) => (
               <li
                 key={item}
-                className="flex justify-center items-center w-[83px] h-[40px] font-latoBold text-small text-white leading-3"
+                className="flex justify-center items-center w-[83px] h-[40px] font-latoBold text-small text-white leading-3 cursor-pointer"
               >
                 <Link
-                  to="about"
+                  to={item}
                   spy={true}
                   smooth={true}
                   offset={-100}
