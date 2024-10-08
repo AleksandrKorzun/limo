@@ -18,6 +18,8 @@ const libraries = ["core", "map", "places", "marker"];
 const SectionForm = () => {
   const [step, setStep] = useState(1);
   const [map, setMap] = useState(null);
+  const [isMapVisible, setIsMapVisible] = useState(true);
+
   const [startDate, setStartDate] = useState(null);
   const [directionsService, setDirectionsService] = useState(null);
   const [directionsRenderer, setDirectionsRenderer] = useState(null);
@@ -53,27 +55,6 @@ const SectionForm = () => {
 
   const mapRef = useRef(null);
 
-  useEffect(() => {
-    if (isLoaded) {
-      const mapOptions = {
-        center: {
-          lat: 41.881832,
-          lng: -87.623177,
-        },
-        zoom: 12,
-      };
-      const gMap = new google.maps.Map(mapRef.current, mapOptions);
-
-      setMap(gMap);
-
-      const directionsService = new google.maps.DirectionsService();
-      const directionsRenderer = new google.maps.DirectionsRenderer();
-      directionsRenderer.setMap(gMap);
-      setDirectionsService(directionsService);
-      setDirectionsRenderer(directionsRenderer);
-    }
-  }, [isLoaded]);
-
   const showRoute = async (startLocation, endLocation, waypoints = []) => {
     if (!startLocation || !endLocation) return;
 
@@ -101,11 +82,58 @@ const SectionForm = () => {
       }
     });
   };
+
+  useEffect(() => {
+    if ((step === 1 || step === 4) && isLoaded) {
+      const mapOptions = {
+        center: {
+          lat: 41.881832,
+          lng: -87.623177,
+        },
+        zoom: 12,
+      };
+      const gMap = new google.maps.Map(mapRef.current, mapOptions);
+
+      setMap(gMap);
+
+      const directionsService = new google.maps.DirectionsService();
+      const directionsRenderer = new google.maps.DirectionsRenderer();
+      directionsRenderer.setMap(gMap);
+      setDirectionsService(directionsService);
+      setDirectionsRenderer(directionsRenderer);
+
+      if (!form.pick_up_location || !form.drop_off_location) return;
+
+      const request = {
+        origin: form.pick_up_location,
+        destination: form.drop_off_location,
+        travelMode: google.maps.TravelMode.DRIVING,
+        waypoints: form.way_points.map((point) => ({
+          location: point,
+          stopover: true,
+        })),
+        optimizeWaypoints: true,
+      };
+
+      directionsService.route(request, (result, status) => {
+        if (status === google.maps.DirectionsStatus.OK) {
+          directionsRenderer.setDirections(result);
+
+          const route = result.routes[0];
+          const { distance, duration } = route.legs[0];
+          setDistance(distance.text); // e.g., "12.3 mi"
+          setDuration(duration.text); // e.g., "30 mins"
+        } else {
+          console.error("Error fetching directions:", result);
+        }
+      });
+    }
+  }, [step, isLoaded]);
+
   const onSubmitForm = (v) => {
     setStep((prev) => (prev !== 3 ? prev + 1 : prev));
-    console.log("v", v);
   };
-  console.log("form", form);
+
   const getForm = () => {
     switch (step) {
       case 1:
@@ -150,6 +178,8 @@ const SectionForm = () => {
             step={step}
             setStep={setStep}
             form={form}
+            mapRef={mapRef}
+            isLoaded={isLoaded}
             setForm={setForm}
             duration={duration}
             distance={distance}

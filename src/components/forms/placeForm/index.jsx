@@ -121,6 +121,7 @@ const PlaceForm = ({
       customTime.timeValue === "PM" ? customTime.hours + 12 : customTime.hours
     );
     newTime.setMinutes(customTime.minutes);
+
     setTime(newTime);
     setForm((prev) => ({
       ...prev,
@@ -131,6 +132,7 @@ const PlaceForm = ({
       }),
     }));
     setIsOpen(false);
+    return newTime;
   };
 
   return (
@@ -191,7 +193,8 @@ const PlaceForm = ({
                   <DatePicker
                     months={months}
                     placeholderText="Select date"
-                    selected={form.date}
+                    selected={values.date}
+                    minDate={new Date()}
                     renderCustomHeader={({
                       date,
                       decreaseMonth,
@@ -213,7 +216,8 @@ const PlaceForm = ({
                       setFieldValue("date", date);
                       setForm((prev) => ({
                         ...prev,
-                        date: date.toLocaleString().split(",")[0],
+                        date: date?.toLocaleString().split(",")[0],
+                        // date: date,
                       }));
                     }}
                     className="p-[8px] bg-input rounded-[8px] w-full"
@@ -230,7 +234,7 @@ const PlaceForm = ({
                   </label>
                   <DatePicker
                     className="p-[8px] bg-input rounded-[8px] w-full"
-                    selected={time}
+                    selected={values.time}
                     placeholderText="Select time"
                     onChange={(date) => {
                       setTime(date);
@@ -290,13 +294,13 @@ const PlaceForm = ({
                       text="Set time"
                       className="w-full mt-[8px]"
                       onClick={() => {
-                        handleSetTime();
-                        setFieldValue("time", time);
+                        const timeValue = handleSetTime();
+                        setFieldValue("time", timeValue);
                       }}
                     />
                   </DatePicker>
-                  {errors.date && (
-                    <p className="text-[#FD7542]">{errors.date}</p>
+                  {errors.time && (
+                    <p className="text-[#FD7542]">{errors.time}</p>
                   )}
                   <ArrowDownSmallIcon className="absolute right-[8px] top-[44px]" />
                 </div>
@@ -379,7 +383,7 @@ const PlaceForm = ({
                   console.log("errors", formErr);
                   console.log("values", values);
                   if (Object.values(errors).length) return;
-                  handleSubmit();
+                  // handleSubmit();
                   setStep(2);
                 }}
               />
