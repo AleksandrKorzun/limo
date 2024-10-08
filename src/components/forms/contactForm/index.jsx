@@ -44,12 +44,12 @@ const ContactForm = ({ step, setStep, form, setForm }) => {
         }}
       >
         {({ handleSubmit, handleChange, values, setFieldValue }) => (
-          <form className="flex flex-col gap-[40px] desc:w-[654px]">
+          <form className="flex flex-col gap-[40px] desc:w-[654px] w-full">
             <p className="text-main font-latoMedium text-medium leading-[130%] pb-[8px] border-b-[1.5px] border-b-solid border-b-[#D8D8D8]">
               {BOOKING_STEPS[step - 1].title}
             </p>
             <div className="flex flex-col justify-between gap-[24px] ">
-              <div className="w-full flex items-center justify-between gap-[40px]">
+              <div className="w-full flex mobV:flex-col items-center justify-between gap-[40px]">
                 <Input
                   label="First Name"
                   type="text"
@@ -73,7 +73,7 @@ const ContactForm = ({ step, setStep, form, setForm }) => {
                   className="w-[100%]"
                 />
               </div>
-              <div className="w-full flex items-center justify-between gap-[40px]">
+              <div className="w-full flex mobV:flex-col items-center justify-between gap-[40px]">
                 <Input
                   label="Email adress"
                   type="text"
@@ -119,7 +119,7 @@ const ContactForm = ({ step, setStep, form, setForm }) => {
                   }}
                 />
               </div>
-              <div className="flex items-center gap-[16px]">
+              <div className="flex mobV:flex-col mobV:items-start items-center gap-[16px]">
                 <div className="flex items-center">
                   <input
                     type="checkbox"
@@ -167,16 +167,17 @@ const ContactForm = ({ step, setStep, form, setForm }) => {
               </div>
             </div>
 
-            <div className="flex gap-[24px]">
+            <div className="flex mobV:flex-col gap-[24px]">
               <CustomButton
                 text="Go Back"
+                variant="black"
                 onClick={() => setStep(2)}
-                className="w-[192px] border-[2px] border-main border-solid bg-transparent shadow-none hover:bg-main hover:text-white"
+                className="w-[192px] mobV:w-full border-[2px] border-main border-solid bg-transparent shadow-none hover:bg-main hover:text-white"
               />
               <CustomButton
                 text="Enter Contact Details"
                 onClick={() => setStep(4)}
-                className="w-[192px]"
+                className="w-[192px] mobV:w-full"
               />
             </div>
           </form>

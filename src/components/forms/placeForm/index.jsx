@@ -186,7 +186,9 @@ const PlaceForm = ({
                   options={BOOKING_FORM[0].option}
                 />
 
-                <div className={`flex flex-col gap-[8px] w-[47.5%] relative`}>
+                <div
+                  className={`flex flex-col gap-[8px] w-[47.5%] mobV:w-full relative`}
+                >
                   <label className="font-latoBold text-small leading-[24px] text-main">
                     Select date
                   </label>
@@ -228,7 +230,9 @@ const PlaceForm = ({
                   )}
                 </div>
 
-                <div className={`flex flex-col gap-[8px] w-[47.5%] relative`}>
+                <div
+                  className={`flex flex-col gap-[8px] w-[47.5%] mobV:w-full relative`}
+                >
                   <label className="font-latoBold text-small leading-[24px] text-main">
                     Select time
                   </label>

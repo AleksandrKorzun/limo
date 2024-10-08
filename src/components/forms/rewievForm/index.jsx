@@ -25,17 +25,36 @@ const ReviewForm = ({
   duration,
   distance,
 }) => {
+  const handleSubmit = async (e) => {
+    // e.preventDefault();
+
+    // const response = await fetch("/api/send-email", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     to: "recipient@example.com",
+    //     subject: "Hello from Next.js",
+    //     text: "This is a test email sent from a Next.js app.",
+    //   }),
+    // });
+
+    // const data = await response.json();
+    // console.log(data);
+    setStep(5);
+  };
   return (
     <motion.div
-      className="flex gap-[32px]"
+      className="flex mobV:flex-col gap-[32px]"
       variants={container}
       initial="hidden"
       animate="visible"
       exit="hidden"
     >
-      <div className="desc:w-[50%] h-fit px-[16px] py-[32px] hidden desc:block shadow-map rounded-xl bg-white">
+      <div className="desc:w-[50%] h-fit px-[16px] py-[32px] desc:block shadow-map rounded-xl bg-white">
         <div className="flex w-auto justify-between items-center pb-[8px] mb-[32px] border-b-[1px] border-input border-solid">
-          <p className="text-main font-latoMedium text-medium leading-[130%] pb-[8px] border-b-[1px] border-b-solid border-b-[#D8D8D8]">
+          <p className="text-main font-latoMedium text-medium leading-[130%] pb-[8px] ">
             Review Your Booking
           </p>
           <button className="flex items-center font-latoBlack text-small text-accent">
@@ -137,18 +156,36 @@ const ReviewForm = ({
             </p>
           </div>
         </div>
-        <div className="flex gap-[24px] mt-[40px]">
+        <div className="flex mobV:flex-col gap-[24px] mt-[40px]">
           <CustomButton
             text="Go Back"
             onClick={() => setStep(3)}
-            className="w-[192px] border-[2px] border-main border-solid bg-transparent shadow-none hover:bg-main hover:text-white"
+            variant="black"
+            className="w-[192px] mobV:w-full border-[2px] border-main border-solid bg-transparent shadow-none hover:bg-main hover:text-white"
           />
           <CustomButton
-            text="Enter Contact Details"
-            onClick={() => setStep(5)}
-            className="w-[192px]"
+            text="Confirm Booking"
+            onClick={async () => {
+              await handleSubmit();
+            }}
+            className="w-[192px] mobV:w-full"
           />
         </div>
+      </div>
+      <div className="flex mobV:flex-col desc:hidden gap-[24px] mt-[40px]">
+        <CustomButton
+          text="Go Back"
+          onClick={() => setStep(3)}
+          variant="black"
+          className="w-[192px] mobV:w-full border-[2px] border-main border-solid bg-transparent shadow-none hover:bg-main hover:text-white"
+        />
+        <CustomButton
+          text="Confirm Booking"
+          onClick={async () => {
+            await handleSubmit();
+          }}
+          className="w-[192px] mobV:w-full"
+        />
       </div>
     </motion.div>
   );

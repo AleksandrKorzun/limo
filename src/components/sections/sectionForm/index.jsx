@@ -134,6 +134,16 @@ const SectionForm = () => {
     setStep((prev) => (prev !== 3 ? prev + 1 : prev));
   };
 
+  const scrollToAnchor = () => {
+    const element = document.getElementById("book-form");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  useEffect(() => {
+    scrollToAnchor();
+  }, [step]);
   const getForm = () => {
     switch (step) {
       case 1:
@@ -199,7 +209,7 @@ const SectionForm = () => {
       <Container className>
         <a id="book-form" className="invisible"></a>
         <Title text="Booking Form" />
-        <div className="bg-backgroundSecondary desc:px-[112px] desc:py-[56px]">
+        <div className="bg-backgroundSecondary desc:px-[112px] desc:py-[56px] mobV:px-[16px] mobV:py-[48px] rounded-[16px]">
           {step !== 4 && <Stepper step={step} />}
           {getForm()}
         </div>

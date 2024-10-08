@@ -10,9 +10,8 @@ const Select = ({
   options,
   className,
 }) => {
-  console.log("value", value);
   return (
-    <div className={`flex flex-col gap-[8px] w-[100%]  ${className}`}>
+    <div className={`flex flex-col gap-[8px] w-full  ${className}`}>
       <label className="font-latoBold text-small leading-[24px] text-main">
         {label}
       </label>
@@ -23,7 +22,7 @@ const Select = ({
         onChange={(e) => {
           onChange(e.target.value);
         }}
-        className={`p-[8px] bg-input rounded-[8px] h-[40px] `}
+        className={`p-[8px] bg-input rounded-[8px] w-full h-[40px] `}
       >
         {options.map(({ title, value }) => (
           <option value={value} key={title}>
