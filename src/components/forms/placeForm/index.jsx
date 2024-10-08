@@ -143,7 +143,7 @@ const PlaceForm = ({
     >
       <Formik
         initialValues={{
-          type_transfer: "",
+          type_transfer: form.type_transfer,
           date: "",
           time: "",
           pick_up_location: "",
@@ -219,7 +219,9 @@ const PlaceForm = ({
                     className="p-[8px] bg-input rounded-[8px] w-full"
                   />
                   <CalendarIcon className="absolute right-[8px] top-[44px]" />
-                  {values.date.error && <p className="text-[#FD7542]">error</p>}
+                  {errors.date && (
+                    <p className="text-[#FD7542]">{errors.date}</p>
+                  )}
                 </div>
 
                 <div className={`flex flex-col gap-[8px] w-[47.5%] relative`}>
@@ -293,6 +295,9 @@ const PlaceForm = ({
                       }}
                     />
                   </DatePicker>
+                  {errors.date && (
+                    <p className="text-[#FD7542]">{errors.date}</p>
+                  )}
                   <ArrowDownSmallIcon className="absolute right-[8px] top-[44px]" />
                 </div>
                 <AutoCompleteInput
@@ -372,6 +377,8 @@ const PlaceForm = ({
                 onClick={async () => {
                   const formErr = await validateForm();
                   console.log("errors", formErr);
+                  console.log("values", values);
+                  if (Object.values(errors).length) return;
                   handleSubmit();
                   setStep(2);
                 }}

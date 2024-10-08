@@ -52,7 +52,7 @@ const AutoCompleteInput = forwardRef(
           autoComplete="off"
         />
         {error && label && !inputValue && (
-          <p className="text-red-600">{error}</p>
+          <p className="text-[#FD7542]">{error}</p>
         )}
       </div>
     );

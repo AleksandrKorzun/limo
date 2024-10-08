@@ -4,8 +4,19 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import CustomButton from "../ui/customButton";
-import { Link } from "react-scroll"; // Правильний імпорт
+import { Link } from "react-scroll";
 import { NAV } from "@/data/constant";
+import { motion } from "framer-motion";
+
+const hoverVariants = {
+  initial: { top: 0, opacity: 1 },
+  hover: { top: -25, opacity: 0, transition: { duration: 0.3 } },
+};
+
+const hoverTextVariants = {
+  initial: { top: 25, opacity: 0 },
+  hover: { top: 0, opacity: 1, transition: { duration: 0.3 } },
+};
 
 const Header = () => {
   const [showComponent, setShowComponent] = useState(true);
@@ -48,9 +59,11 @@ const Header = () => {
       <nav className="mobV:hidden mobH:block tabV:block tabH:block desc:block">
         <ul className="flex items-center gap-[32px]">
           {NAV.map((item, index) => (
-            <li
+            <motion.li
               key={item}
-              className="flex justify-center items-center w-[83px] h-[40px] font-latoBold text-small text-main leading-3 cursor-pointer"
+              className="flex justify-center items-center w-[83px] h-[40px] font-latoBold text-small text-main leading-3 cursor-pointer relative"
+              initial="initial"
+              whileHover="hover"
             >
               <Link
                 to={item}
@@ -58,10 +71,22 @@ const Header = () => {
                 smooth={true}
                 offset={-190}
                 duration={1000}
+                className="relative"
               >
-                {item}
+                <motion.span
+                  className="absolute translate-y-[-50%] translate-x-[-50%] left-0 top-1/2"
+                  variants={hoverVariants}
+                >
+                  {item}
+                </motion.span>
+                <motion.span
+                  className="absolute translate-y-[-50%] translate-x-[-50%] left-0 top-1/2"
+                  variants={hoverTextVariants}
+                >
+                  {item}
+                </motion.span>
               </Link>
-            </li>
+            </motion.li>
           ))}
         </ul>
       </nav>

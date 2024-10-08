@@ -36,11 +36,10 @@ const VehicleForm = ({ form, setForm, step, setStep }) => {
           passengers: 1,
           suitcase: 1,
           child_seat: 1,
-          type: "",
-          car: "",
+          type: form.type,
         }}
       >
-        {({ handleSubmit, handleChange, values, setFieldValue }) => (
+        {({ handleSubmit, handleChange, values, setFieldValue, errors }) => (
           <form className="flex flex-col gap-[40px] desc:w-[654px]">
             <p className="text-main font-latoMedium text-medium leading-[130%] pb-[8px] border-b-[1.5px] border-b-solid border-b-[#D8D8D8]">
               {BOOKING_STEPS[step - 1].title}
@@ -61,9 +60,16 @@ const VehicleForm = ({ form, setForm, step, setStep }) => {
                 />
               ))}
             </div>
-            <ul className="flex flex-col justify-between gap-[32px] w-full">
+            <ul className="flex flex-col justify-between gap-[16px] w-full">
               {FLEET.map(({ img, passengers, title, suitcase }) => (
-                <li key={passengers} className="flex items-center">
+                <li
+                  key={passengers}
+                  className={`flex items-center p-[16px] rounded-[16px] ${
+                    title === form.type
+                      ? "border-main border-[2px]"
+                      : "border-none"
+                  }`}
+                >
                   <Image
                     src={img}
                     width={225}
@@ -91,7 +97,15 @@ const VehicleForm = ({ form, setForm, step, setStep }) => {
                     </div>
                     <button
                       type="button"
-                      className="mt-auto border-[2px] border-solid border-main px-[24px] py-[8px] rounded-[8px] font-latoBlack text-small hover:bg-main hover:text-white transition-colors duration-300"
+                      onClick={() => {
+                        setFieldValue("type", title);
+                        setForm({ ...form, type: title });
+                      }}
+                      className={`mt-auto border-[2px] border-solid border-main px-[24px] py-[8px] rounded-[8px] font-latoBlack text-small hover:bg-main hover:text-white transition-colors duration-300 ${
+                        title === form.type
+                          ? "bg-main text-accent"
+                          : "bg-transparent text-main"
+                      }`}
                     >
                       Select
                     </button>

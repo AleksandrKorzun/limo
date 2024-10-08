@@ -35,7 +35,7 @@ const SectionForm = () => {
     suitcase: 1,
     child_seat: 1,
     car: "",
-    type: "",
+    type: "Premium Sedan",
     first_name: "",
     second_name: "",
     email_address: "",
