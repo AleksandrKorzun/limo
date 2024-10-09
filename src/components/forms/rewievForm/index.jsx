@@ -3,6 +3,7 @@ import EditIcon from "@/assets/icons/Edit";
 import CustomButton from "@/components/ui/customButton";
 import React from "react";
 import { motion } from "framer-motion";
+import axios from "axios";
 
 const container = {
   hidden: { opacity: 1, scale: 0 },
@@ -26,22 +27,14 @@ const ReviewForm = ({
   distance,
 }) => {
   const handleSubmit = async (e) => {
-    // e.preventDefault();
+    try {
+      await axios.post("/api/send-email", form);
 
-    // const response = await fetch("/api/send-email", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     to: "recipient@example.com",
-    //     subject: "Hello from Next.js",
-    //     text: "This is a test email sent from a Next.js app.",
-    //   }),
-    // });
-
-    // const data = await response.json();
-    // console.log(data);
+      const result = await response.json();
+    } catch (error) {
+      console.log("error", error);
+      // setMessage("Error occurred while sending email.");
+    }
     setStep(5);
   };
   return (
@@ -165,8 +158,8 @@ const ReviewForm = ({
           />
           <CustomButton
             text="Confirm Booking"
-            onClick={async () => {
-              await handleSubmit();
+            onClick={() => {
+              handleSubmit();
             }}
             className="w-[192px] mobV:w-full"
           />

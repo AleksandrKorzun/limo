@@ -48,7 +48,7 @@ const Header = () => {
           : "translate(-50%, -150%)",
         transition: "transform 1s",
       }}
-      className="fixed z-200 top-[24px] left-[50%] translate-x-[-50%] flex justify-between items-center mobV:px-[8px] mobH:px-[32px] tabV:px-[32px] tabH:px-[32px] desc:px-[32px] mobV:w-[327px] mobH:w-[793px] tabV:w-[720px] tabH:w-[816px] desc:w-[864px] h-[72px] bg-header rounded-[16px]"
+      className="fixed z-200 top-[24px] left-[50%] translate-x-[-50%] flex justify-between items-center px-[32px] mobV:px-[8px] mobH:px-[32px] tabV:px-[32px] tabH:px-[32px] desc:px-[32px] w-[720px] mobV:w-[327px] mobH:w-[793px] tabV:w-[720px] tabH:w-[816px] desc:w-[864px] h-[72px] bg-header rounded-[16px]"
     >
       <Image
         src="/images/desc/Logo.png"

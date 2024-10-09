@@ -13,7 +13,7 @@ export default function Home() {
     // <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
     <div className="">
       <Header />
-      <main className="flex flex-col mobV:gap-[96px] mobH:gap-[96px] desc:gap-[120px]">
+      <main className="flex flex-col mobV:gap-[96px] mobH:gap-[96px] gap-[104px] desc:gap-[120px]">
         <SectionHero />
         <SectionForm />
         <SectionService />

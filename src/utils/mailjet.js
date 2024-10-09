@@ -1,4 +1,3 @@
-// lib/mailjet.js
 import Mailjet from "node-mailjet";
 
 const mailjetClient = new Mailjet({
