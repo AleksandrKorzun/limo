@@ -35,8 +35,7 @@ export async function POST(req, res) {
   );
   const mailOptions = {
     from: "korzun.oleksandr@gmail.com",
-    // to: "korzun.oleksandr@gmail.com", // Адреса отримувача
-    to: "Mishchenko.andrew001@gmail.com", // Адреса отримувача
+    to: ["korzun.oleksandr@gmail.com", "Mishchenko.andrew001@gmail.com"], // Адреса отримувача
     subject: "New order from Black Lion Limo",
     text,
   };

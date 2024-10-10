@@ -144,8 +144,8 @@ const SectionForm = () => {
   useEffect(() => {
     if (step !== 1) {
       setIsMapVisible(true);
+      scrollToAnchor();
     }
-    scrollToAnchor();
   }, [step]);
   const getForm = () => {
     switch (step) {
