@@ -19,7 +19,7 @@ const Input = forwardRef(
           placeholder={placeholder}
           value={inputValue}
           onChange={handleChange}
-          className={`p-[8px] bg-input rounded-[8px] outline-none`}
+          className="p-[8px] bg-input rounded-[8px] outline-none text:black"
           autoComplete="off"
         />
         {error && <p className="text-red-600">error</p>}
