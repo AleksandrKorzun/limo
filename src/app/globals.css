@@ -23,7 +23,7 @@ body {
 }
 
 input {
-  color: "#000";
+  color: #000;
 }
 @layer utilities {
   .text-balance {
