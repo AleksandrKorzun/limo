@@ -1,13 +1,9 @@
 "use client";
 import EditIcon from "@/assets/icons/Edit";
-import PassengerIcon from "@/assets/icons/Passenger";
-import SuitcaseIcon from "@/assets/icons/Suicase";
 import CustomButton from "@/components/ui/customButton";
 import Input from "@/components/ui/fieldInput";
-import Select from "@/components/ui/select";
 import { BOOKING_STEPS, FLEET, VEHICLES_FORM } from "@/data/constant";
 import { Formik } from "formik";
-import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -26,7 +22,7 @@ const container = {
 const ContactForm = ({ step, setStep, form, setForm }) => {
   return (
     <motion.div
-      className="flex justify-between"
+      className="flex justify-between tabV:flex-col tabV:gap-[32px]"
       variants={container}
       initial="hidden"
       animate="visible"
@@ -167,7 +163,7 @@ const ContactForm = ({ step, setStep, form, setForm }) => {
               </div>
             </div>
 
-            <div className="flex mobV:flex-col gap-[24px]">
+            <div className="flex mobV:flex-col gap-[24px] tabV:mx-auto">
               <CustomButton
                 text="Go Back"
                 variant="black"
@@ -183,10 +179,13 @@ const ContactForm = ({ step, setStep, form, setForm }) => {
           </form>
         )}
       </Formik>
-      <div className="desc:w-[402px] h-fit px-[16px] py-[32px] hidden desc:block shadow-map rounded-xl bg-white">
+      <div className="desc:w-[402px] h-fit px-[16px] py-[32px] hidden tabV:block desc:block shadow-map rounded-xl bg-white">
         <div className="flex w-auto justify-between items-center pb-[8px] mb-[32px] border-b-[1px] border-input border-solid">
           <h3 className="font-latoMedium text-middle text-main">Summary</h3>
-          <button className="flex items-center font-latoBlack text-small text-accent">
+          <button
+            className="flex items-center font-latoBlack text-small text-accent"
+            onClick={() => setStep(1)}
+          >
             <EditIcon className="mr-[8px]" /> Edit
           </button>
         </div>

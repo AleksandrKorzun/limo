@@ -9,7 +9,7 @@ const SectionAdvantage = () => {
     <section>
       <Container>
         <Title text="Why Choose Us" />
-        <div className="flex mobV:flex-col flex-row justify-between gap-[24px] flex-wrap">
+        <div className="flex mobV:flex-col flex-row justify-between gap-[24px] tabV:gap-[16px] flex-wrap">
           {ADVANTAGE.map(({ img, title, desc }) => (
             <CardAdvantage key={img} img={img} title={title} desc={desc} />
           ))}

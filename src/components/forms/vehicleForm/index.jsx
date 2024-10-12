@@ -31,7 +31,7 @@ const VehicleForm = ({ form, setForm, step, setStep }) => {
       animate="visible"
       exit="hidden"
     >
-      <div className="flex mobV:flex-col gap-[32px]">
+      <div className="flex mobV:flex-col tabV:flex-col gap-[32px]">
         <Formik
           initialValues={{
             passengers: 1,
@@ -132,7 +132,10 @@ const VehicleForm = ({ form, setForm, step, setStep }) => {
         <div className="desc:w-[402px] h-fit px-[16px] py-[32px] desc:block shadow-map rounded-xl bg-white">
           <div className="flex w-auto justify-between items-center pb-[8px] mb-[32px] border-b-[1px] border-input border-solid">
             <h3 className="font-latoMedium text-middle text-main">Summary</h3>
-            <button className="flex items-center font-latoBlack text-small text-accent">
+            <button
+              className="flex items-center font-latoBlack text-small text-accent"
+              onClick={() => setStep(1)}
+            >
               <EditIcon className="mr-[8px]" /> Edit
             </button>
           </div>
@@ -174,7 +177,7 @@ const VehicleForm = ({ form, setForm, step, setStep }) => {
           </div>
         </div>
       </div>
-      <div className="flex gap-[24px] mobV:flex-col">
+      <div className="flex gap-[24px] mobV:flex-col tabV:mx-auto">
         <CustomButton
           text="Go Back"
           onClick={() => setStep(1)}

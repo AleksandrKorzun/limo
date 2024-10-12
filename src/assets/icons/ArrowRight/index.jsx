@@ -11,13 +11,13 @@ const ArrowRightIcon = (props) => (
     <path
       d="M21 15L30.0402 24.0402"
       stroke="currentColor"
-      stroke-width="2"
+      // stroke-width="2"
       // stroke-linecap="round"
     />
     <path
       d="M21.2749 33.3477L30.0401 24.0405"
       stroke="currentColor"
-      stroke-width="2"
+      // stroke-width="2"
       // stroke-linecap="round"
     />
   </svg>

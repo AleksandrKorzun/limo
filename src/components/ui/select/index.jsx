@@ -22,7 +22,7 @@ const Select = ({
         onChange={(e) => {
           onChange(e.target.value);
         }}
-        className={`p-[8px] bg-input rounded-[8px] w-full h-[40px] `}
+        className={`p-[8px] bg-input rounded-[8px] w-full h-[40px] text-black outline-none`}
       >
         {options.map(({ title, value }) => (
           <option value={value} key={title}>

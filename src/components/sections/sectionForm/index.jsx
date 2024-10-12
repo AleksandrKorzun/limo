@@ -209,10 +209,10 @@ const SectionForm = () => {
   };
   return (
     <section>
-      <Container className>
+      <Container>
         <a id="book-form" className="invisible"></a>
         <Title text="Booking Form" />
-        <div className="bg-backgroundSecondary px-[16px] py-[48px] desc:px-[112px] desc:py-[56px] mobV:px-[16px] mobV:py-[48px] tabV:mx-[24px] rounded-[16px]">
+        <div className="bg-backgroundSecondary px-[16px] py-[48px] desc:px-[112px] desc:py-[56px] mobV:px-[16px] mobV:py-[48px] rounded-[16px]">
           {step !== 4 && <Stepper step={step} />}
           {getForm()}
         </div>

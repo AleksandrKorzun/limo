@@ -11,14 +11,14 @@ const ArrowLeftIcon = (props) => (
     <path
       d="M27 15L17.9598 24.0402"
       stroke="currentColor"
-      stroke-width="2"
+      // stroke-width="2"
       // stroke-linecap="round"
     />
     <path
       d="M26.7251 33.3477L17.9599 24.0405"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
+      // stroke-width="2"
+      // stroke-linecap="round"
     />
   </svg>
 );

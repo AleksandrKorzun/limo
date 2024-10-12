@@ -111,42 +111,52 @@ export const REVIEW = [
   {
     name: (
       <>
-        Sarah K.
+        Peter S.
         <br />
-        CEO of StartUp Innovations
+        Entrepreneur
       </>
     ),
-    desc: "“Our team used Lion Limousine for a company retreat, and the Premium Bus was perfect for our group. The ride was smooth, and the onboard amenities were top-notch. It was a great way to travel together and start our retreat on the right note. Thank you for the outstanding service!”",
+    desc: "“The full-day chauffeur service was a game-changer during my business meetings. I didn’t have to worry about parking or navigating the city, and I could stay productive between meetings. If you're looking for convenience and comfort, this is the way to go.”",
   },
   {
     name: (
       <>
-        Sarah K.
+        Laura G.
         <br />
-        CEO of StartUp Innovations
+        Event Coordinator, Dream Events
       </>
     ),
-    desc: "“Our team used Lion Limousine for a company retreat, and the Premium Bus was perfect for our group. The ride was smooth, and the onboard amenities were top-notch. It was a great way to travel together and start our retreat on the right note. Thank you for the outstanding service!”",
+    desc: "“We booked the Premium Bus for a large corporate event, and it was the best decision we made. The ride was smooth, spacious, and the onboard amenities were perfect for our guests. Everyone arrived happy and relaxed, setting the right tone for the event.”",
   },
   {
     name: (
       <>
-        Sarah K.
+        David P.
         <br />
-        CEO of StartUp Innovations
+        Conference Speaker
       </>
     ),
-    desc: "“Our team used Lion Limousine for a company retreat, and the Premium Bus was perfect for our group. The ride was smooth, and the onboard amenities were top-notch. It was a great way to travel together and start our retreat on the right note. Thank you for the outstanding service!”",
+    desc: "“I travel often for conferences, and their airport transfer service is top-tier. The driver greeted me with a warm smile and helped with my luggage. I was able to relax and arrive at my hotel refreshed and on time. Highly recommend for anyone who values comfort and reliability.”",
   },
   {
     name: (
       <>
-        Sarah K.
+        Anna L.
         <br />
-        CEO of StartUp Innovations
+        Luxury Travel Blogger
       </>
     ),
-    desc: "“Our team used Lion Limousine for a company retreat, and the Premium Bus was perfect for our group. The ride was smooth, and the onboard amenities were top-notch. It was a great way to travel together and start our retreat on the right note. Thank you for the outstanding service!”",
+    desc: "“Lion Limousine exceeded my expectations. From booking to arrival, every detail was carefully managed. The chauffeur was friendly yet professional, and the Premium Sedan was immaculate. I will definitely use this service again on my future visits.”",
+  },
+  {
+    name: (
+      <>
+        Michael B.
+        <br />
+        Global Enterprises
+      </>
+    ),
+    desc: "“The service was beyond exceptional! I booked the Premium SUV for a business trip, and everything was flawless. The driver was punctual, polite, and knew the best routes. The journey was incredibly comfortable, and I could focus on my work without distractions.”",
   },
 ];
 

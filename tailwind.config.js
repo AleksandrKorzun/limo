@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        mobV: "375px",
+        // mobV: "375px",
         mobV: { raw: "(min-width: 300px) and (max-width: 767px)" },
         // mobH: { raw: "(max-height: 504px) and (max-width: 1000px)" },
         tabV: {

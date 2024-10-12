@@ -4,10 +4,14 @@
 .review-wrapper {
   width: 100%;
 
-  @media (min-width: 550px) and (max-height: 504px) and (max-width: 1000px) {
+  /* @media (min-width: 550px) and (max-width: 767px) {
     width: 376px;
+  } */
+  @media (min-width: 768px) and (max-width: 1200px) {
+    width: 416px;
+    height: 352px;
   }
-  @media (min-width: 1440px) {
+  @media (min-width: 1201px) {
     width: 416px;
     /* margin-right: 32px !important; */
   }

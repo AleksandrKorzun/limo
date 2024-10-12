@@ -32,7 +32,10 @@ const Footer = () => {
         </nav>
         <div className="mobV:grid mobV:grid-cols-2 flex justify-between gap-x-subgrid gap-y-[20px] pt-[32px] mb-[48px]">
           {CONTACT.map(({ title, value }, i) => (
-            <div key={title} className="flex flex-col gap-[16px] w-auto">
+            <div
+              key={title + value}
+              className="flex flex-col gap-[16px] w-auto"
+            >
               <h2
                 className={`text-background text-[24px] w-fit mobV:w-auto ${
                   i % 2 === 0 ? "mobV:text-start" : "mobV:text-end"

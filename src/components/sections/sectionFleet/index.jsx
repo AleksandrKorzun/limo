@@ -10,7 +10,7 @@ const SectionFleet = () => {
       <Container>
         <Title text="Discover Our Fleet" />
         <a id="Cars" className="invisible"></a>
-        <div className="flex mobV:flex-col mobH:flex-col gap-[40px] flex-row">
+        <div className="flex mobV:flex-col mobH:flex-col tabV:flex-col gap-[40px] flex-row">
           {FLEET.map(({ img, title, desc, specification }) => (
             <CardFleet
               img={img}

@@ -137,7 +137,7 @@ const PlaceForm = ({
 
   return (
     <motion.div
-      className="flex gap-[32px]"
+      className="flex tabV:flex-col gap-[32px]"
       variants={container}
       initial="hidden"
       animate="visible"
@@ -322,7 +322,7 @@ const PlaceForm = ({
                     type="text"
                     className="w-full"
                     isLoaded={isLoaded}
-                    key="Way points Location"
+                    key={`Way points Location ${idx}`}
                     placeholder="Select"
                     value={form.way_points[idx]}
                     onChange={(v) => {
@@ -388,9 +388,9 @@ const PlaceForm = ({
           );
         }}
       </Formik>
-      <div className="desc:w-[50%] max-h-[576px] hidden desc:block shadow-map rounded-xl">
+      <div className="desc:w-[50%] max-h-[576px] hidden tabV:block desc:block shadow-map rounded-xl">
         {isLoaded ? (
-          <div ref={mapRef} className="desc:h-[432px] rounded-t-[16px]"></div>
+          <div ref={mapRef} className="h-[432px] rounded-t-[16px]"></div>
         ) : (
           <div className="desc:h-[432px]"></div>
         )}

@@ -49,7 +49,7 @@ const SectionReview = () => {
           className="slider-wrapper"
         >
           {REVIEW.map(({ name, desc }) => (
-            <SwiperSlide key={name} className="review-wrapper">
+            <SwiperSlide key={desc} className="review-wrapper">
               <CardReview name={name} desc={desc} />
             </SwiperSlide>
           ))}
@@ -63,10 +63,10 @@ const SectionReview = () => {
             </div>
           </div>
         </Swiper>
-        <div className="flex flex-col gap-[16px] desc:flex-row desc:gap-[32px] desc:mt-[104px]">
+        <div className="flex flex-col gap-[16px] desc:flex-row desc:gap-[32px] tabV:mt-[104px] desc:mt-[104px]">
           <Text
             text="Elevate Your Journey with Lion Limousine Luxury Awaits"
-            className="text-[48px] leading-[56px] mb-[40px] desc:text-[72px] desc:mb-0 desc:w-[752px] desc:leading-[80px]"
+            className="text-[48px] leading-[56px] mb-[40px] tabV:text-[64px] tabV:leading-[72px] desc:text-[72px] desc:mb-0 desc:w-[752px] desc:leading-[80px]"
           />
           <div className="flex flex-col gap-[16px] desc:flex-row-reverse desc:py-[40px] desc:gap-[55px]">
             <CustomButton text="Call us" className="w-full desc:w-[192px]" />
