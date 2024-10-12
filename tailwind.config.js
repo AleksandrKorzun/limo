@@ -9,15 +9,15 @@ module.exports = {
     extend: {
       screens: {
         mobV: "375px",
-        mobV: { raw: "(min-width: 300px) and (max-width: 550px)" },
-        mobH: { raw: "(max-height: 504px) and (max-width: 1000px)" },
+        mobV: { raw: "(min-width: 300px) and (max-width: 767px)" },
+        // mobH: { raw: "(max-height: 504px) and (max-width: 1000px)" },
         tabV: {
-          raw: "(min-width: 768px) and (max-width: 1025px)",
+          raw: "(min-width: 768px) and (max-width: 1200px)",
         },
         // tabH: {
         //   raw: "(min-height: 505px) and (max-height: 1025px) and (min-width: 1024px) and (max-width: 1366px)",
         // },
-        desc: "1440px",
+        desc: "1201px",
       },
       colors: {
         background: "#F2F2F2",

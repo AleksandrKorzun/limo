@@ -77,7 +77,7 @@ const ContactForm = ({ step, setStep, form, setForm }) => {
                 <Input
                   label="Email adress"
                   type="text"
-                  placeholder="Enter your first name"
+                  placeholder="limo@gmail.com"
                   values={form.email_address}
                   onChange={(v) => {
                     setFieldValue("email_address", v);
@@ -91,7 +91,7 @@ const ContactForm = ({ step, setStep, form, setForm }) => {
                 <Input
                   label="Phone number"
                   type="text"
-                  placeholder="Enter your first name"
+                  placeholder="+15 123 122 1236"
                   values={form.phone_number}
                   onChange={(v) => {
                     setFieldValue("phone_number", v);

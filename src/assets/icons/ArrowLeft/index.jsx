@@ -12,7 +12,7 @@ const ArrowLeftIcon = (props) => (
       d="M27 15L17.9598 24.0402"
       stroke="currentColor"
       stroke-width="2"
-      stroke-linecap="round"
+      // stroke-linecap="round"
     />
     <path
       d="M26.7251 33.3477L17.9599 24.0405"

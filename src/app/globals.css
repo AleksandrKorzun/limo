@@ -22,6 +22,9 @@ body {
   overscroll-behavior-x: none;
 }
 
+input {
+  color: "#000";
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;

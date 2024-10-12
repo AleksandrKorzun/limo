@@ -10,8 +10,8 @@ const ArrowDownSmallIcon = (props) => (
     <path
       d="M4 6L8 10L12 6"
       stroke="#484747"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      // stroke-linecap="round"
+      // stroke-linejoin="round"
     />
   </svg>
 );

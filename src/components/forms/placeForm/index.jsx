@@ -158,14 +158,7 @@ const PlaceForm = ({
           onSubmitForm();
         }}
       >
-        {({
-          handleSubmit,
-          handleChange,
-          values,
-          setFieldValue,
-          validateForm,
-          errors,
-        }) => {
+        {({ values, setFieldValue, validateForm, errors }) => {
           return (
             <form className="flex flex-col gap-[40px] desc:w-[50%]">
               <p className="text-main font-latoMedium text-medium leading-[130%] pb-[8px] border-b-[1px] border-b-solid border-b-[#D8D8D8]">
