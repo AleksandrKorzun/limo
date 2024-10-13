@@ -1,0 +1,62 @@
+[debug] [2024-10-13T19:09:27.841Z] ----------------------------------------------------------------------
+[debug] [2024-10-13T19:09:27.843Z] Command:       /Users/oleksandrkorzun/.nvm/versions/node/v20.10.0/bin/node /Users/oleksandrkorzun/.nvm/versions/node/v20.10.0/bin/firebase deploy
+[debug] [2024-10-13T19:09:27.843Z] CLI Version:   13.17.0
+[debug] [2024-10-13T19:09:27.843Z] Platform:      darwin
+[debug] [2024-10-13T19:09:27.843Z] Node Version:  v20.10.0
+[debug] [2024-10-13T19:09:27.843Z] Time:          Sun Oct 13 2024 22:09:27 GMT+0300 (Eastern European Summer Time)
+[debug] [2024-10-13T19:09:27.843Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-10-13T19:09:27.885Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-10-13T19:09:27.885Z] > authorizing via signed-in user (korzun.oleksandr@gmail.com)
+[debug] [2024-10-13T19:09:27.885Z] [iam] checking project black-lion-limo for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-10-13T19:09:27.886Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/black-lion-limo:testIamPermissions [none]
+[debug] [2024-10-13T19:09:27.886Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/black-lion-limo:testIamPermissions x-goog-quota-user=projects/black-lion-limo
+[debug] [2024-10-13T19:09:27.887Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/black-lion-limo:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-10-13T19:09:28.702Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/black-lion-limo:testIamPermissions 200
+[debug] [2024-10-13T19:09:28.702Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/black-lion-limo:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-10-13T19:09:28.702Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/black-lion-limo/serviceAccounts/black-lion-limo@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2024-10-13T19:09:28.703Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/black-lion-limo/serviceAccounts/black-lion-limo@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2024-10-13T19:09:29.497Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/black-lion-limo/serviceAccounts/black-lion-limo@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2024-10-13T19:09:29.498Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/black-lion-limo/serviceAccounts/black-lion-limo@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2024-10-13T19:09:29.499Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/black-lion-limo [none]
+[debug] [2024-10-13T19:09:29.894Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/black-lion-limo 200
+[debug] [2024-10-13T19:09:29.894Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/black-lion-limo {"projectId":"black-lion-limo","projectNumber":"598290459206","displayName":"black-lion-limo","name":"projects/black-lion-limo","resources":{"hostingSite":"black-lion-limo"},"state":"ACTIVE","etag":"1_7653883e-1cb2-4ded-88a9-2441138de2b2"}
+[debug] [2024-10-13T19:09:29.897Z] Specified "public" directory "out" does not exist; Deploy to Hosting site "black-lion-limo" may fail or be empty.
+[info] 
+[info] === Deploying to 'black-lion-limo'...
+[info] 
+[info] i  deploying functions, hosting 
+[debug] [2024-10-13T19:09:29.901Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/black-lion-limo [none]
+[debug] [2024-10-13T19:09:30.170Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/black-lion-limo 200
+[debug] [2024-10-13T19:09:30.171Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/black-lion-limo {"projectId":"black-lion-limo","projectNumber":"598290459206","displayName":"black-lion-limo","name":"projects/black-lion-limo","resources":{"hostingSite":"black-lion-limo"},"state":"ACTIVE","etag":"1_7653883e-1cb2-4ded-88a9-2441138de2b2"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2024-10-13T19:09:30.174Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-10-13T19:09:30.174Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/black-lion-limo
+[debug] [2024-10-13T19:09:30.176Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/runtimeconfig.googleapis.com [none]
+[debug] [2024-10-13T19:09:30.176Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/black-lion-limo
+[debug] [2024-10-13T19:09:30.177Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/cloudbuild.googleapis.com [none]
+[debug] [2024-10-13T19:09:30.177Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/cloudbuild.googleapis.com x-goog-quota-user=projects/black-lion-limo
+[debug] [2024-10-13T19:09:30.178Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/artifactregistry.googleapis.com [none]
+[debug] [2024-10-13T19:09:30.178Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/artifactregistry.googleapis.com x-goog-quota-user=projects/black-lion-limo
+[debug] [2024-10-13T19:09:31.154Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/runtimeconfig.googleapis.com 200
+[debug] [2024-10-13T19:09:31.154Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2024-10-13T19:09:31.157Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/cloudbuild.googleapis.com 200
+[debug] [2024-10-13T19:09:31.158Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/cloudbuild.googleapis.com [omitted]
+[warn] ⚠  functions: missing required API cloudbuild.googleapis.com. Enabling now... 
+[debug] [2024-10-13T19:09:31.160Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/cloudbuild.googleapis.com:enable [none]
+[debug] [2024-10-13T19:09:31.160Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/cloudbuild.googleapis.com:enable x-goog-quota-user=projects/black-lion-limo
+[debug] [2024-10-13T19:09:31.170Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/artifactregistry.googleapis.com 200
+[debug] [2024-10-13T19:09:31.170Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/artifactregistry.googleapis.com [omitted]
+[warn] ⚠  artifactregistry: missing required API artifactregistry.googleapis.com. Enabling now... 
+[debug] [2024-10-13T19:09:31.171Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/artifactregistry.googleapis.com:enable [none]
+[debug] [2024-10-13T19:09:31.171Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/artifactregistry.googleapis.com:enable x-goog-quota-user=projects/black-lion-limo
+[debug] [2024-10-13T19:09:31.210Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/cloudfunctions.googleapis.com 200
+[debug] [2024-10-13T19:09:31.210Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2024-10-13T19:09:31.864Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/cloudbuild.googleapis.com:enable 200
+[debug] [2024-10-13T19:09:31.864Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/cloudbuild.googleapis.com:enable [omitted]
+[debug] [2024-10-13T19:09:32.337Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/artifactregistry.googleapis.com:enable 200
+[debug] [2024-10-13T19:09:32.338Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/black-lion-limo/services/artifactregistry.googleapis.com:enable [omitted]
