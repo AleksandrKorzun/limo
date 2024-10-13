@@ -28,11 +28,15 @@ const ReviewForm = ({
 }) => {
   const handleSubmit = async (e) => {
     try {
+      // const text = Object.entries(form).reduce(
+      //   (acc, [key, value]) => (acc += `${key}: ${value}\n`),
+      //   ""
+      // );
       await axios.post("/api/send-email", form);
     } catch (error) {
       console.log("error", error);
     }
-    setStep(5);
+    // setStep(5);
   };
   return (
     <motion.div
