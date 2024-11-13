@@ -36,7 +36,7 @@ const ContactForm = ({ step, setStep, form, setForm }) => {
           phone_number: "",
           comments: "",
           contact_by_phone: false,
-          contact_by_email: false,
+          contact_by_email: true,
         }}
       >
         {({ handleSubmit, handleChange, values, setFieldValue }) => (
@@ -119,6 +119,7 @@ const ContactForm = ({ step, setStep, form, setForm }) => {
                 <div className="flex items-center">
                   <input
                     type="checkbox"
+                    checked={values.contact_by_email}
                     value={form.contact_by_email}
                     onChange={() => {
                       setFieldValue(

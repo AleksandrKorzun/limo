@@ -1,23 +1,30 @@
 export const NAV = ["Services", "Cars", "Contact"];
 
+export const COST = {
+  "Premium SUV": 80,
+  "Premium Sedan": 70,
+};
+
+export const COST_PER_ML = 2;
+export const CONTACTS = { phone: "+380677310942", email: "email@gamil.com" };
 export const SERVICE = [
+  {
+    imgMob: "/images/mob/our_service3.png",
+    imgDesc: "/images/desc/our_service3.png",
+    title: "Airport Transportation",
+    desc: "Experience seamless travel to and from O'Hare and Midway International Airports with our professional chauffeur service.",
+  },
   {
     imgMob: "/images/mob/our_service1.png",
     imgDesc: "/images/desc/our_service1.png",
-    title: "Full-Day Chauffeur Services",
-    desc: "Stay mobile all day with a personal chauffeur at your schedule. Ideal for business meetings, city travel, and trips beyond the city. Enjoy the convenience and focus on what truly matters while we handle the driving.",
+    title: "Corporate Events",
+    desc: "Make a lasting impression with our fleet of executive sedans and luxury SUVs for corporate events, meetings, and client transportation.",
   },
   {
     imgMob: "/images/mob/our_service2.png",
     imgDesc: "/images/desc/our_service2.png",
-    title: "VIP Services Events",
-    desc: "Make a lasting impression on your partners and clients by arriving at your meeting or event in a luxury vehicle. We ensure confidentiality and maximum convenience.",
-  },
-  {
-    imgMob: "/images/mob/our_service3.png",
-    imgDesc: "/images/desc/our_service3.png",
-    title: "Airport transfer, meet and greet",
-    desc: "Say goodbye to the hassle of waiting for a taxi. Our drivers will meet you at the airport and take you to any destination in the city with the highest level of comfort and service.",
+    title: "Weddings and Proms",
+    desc: "Create unforgettable memories with our elegant limousines and party buses, perfect for weddings, proms, and other special occasions.",
   },
   {
     imgMob: "/images/mob/our_service4.png",
@@ -30,23 +37,23 @@ export const SERVICE = [
 export const ADVANTAGE = [
   {
     img: "/images/desc/choose1.png",
-    title: "Premium Fleet",
-    desc: "Our fleet consists exclusively of elite vehicles that provide maximum comfort and style. Each vehicle is regularly maintained and always ready for a perfect trip.",
+    title: "Luxury Fleet",
+    desc: "A diverse fleet of meticulously maintained vehicles, including sedans, SUVs, stretch limousines, and party buses.",
   },
   {
     img: "/images/desc/choose2.png",
-    title: "Professional Drivers",
-    desc: "All our drivers undergo a strict selection and training process to ensure a safe and comfortable journey for you. They know the city well and are always ready to assist.",
+    title: "Professional Chauffeurs",
+    desc: "Highly trained and experienced chauffeurs dedicated to providing exceptional service.",
   },
   {
     img: "/images/desc/choose3.png",
-    title: "Confidentiality ",
-    desc: "We guarantee complete confidentiality of your trips. Our drivers strictly follow safety standards, ensuring protection and peace of mind for you .",
+    title: "Customization",
+    desc: "Tailored services to meet your specific needs and preferences at affordable rates, without compromising on quality.",
   },
   {
     img: "/images/desc/choose4.png",
-    title: "24/7 Service",
-    desc: "We operate around the clock to meet all your transfer needs, whether it’s an early flight or a late event. Our services are available whenever you need them.",
+    title: "Punctuality",
+    desc: "Reliable and timely service to ensure you reach your destination on time",
   },
 ];
 
@@ -274,7 +281,7 @@ export const VEHICLES_FORM = [
     options: [
       { title: "Premium Sedan", value: "Premium Sedan" },
       { title: "Premium SUV", value: "Premium SUV" },
-      { title: "Premium Bus", value: "Premium Bus" },
+      { title: "Premium Bus", value: "Premium Bus (14 people)" },
     ],
   },
 ];

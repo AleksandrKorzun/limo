@@ -4,6 +4,7 @@ import CustomButton from "@/components/ui/customButton";
 import React from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
+import { COST, COST_PER_ML } from "@/data/constant";
 
 const container = {
   hidden: { opacity: 1, scale: 0 },
@@ -16,6 +17,10 @@ const container = {
     },
   },
 };
+const accessToken = process.env.NEXT_PUBLIC_REACT_APP_TELEGRAM_API_KEY;
+const chatID = 291340498;
+// const phoneNumber = ["380677310942", "16196381625"];
+const phoneNumber = ["380677310942"];
 
 const ReviewForm = ({
   step,
@@ -26,18 +31,44 @@ const ReviewForm = ({
   duration,
   distance,
 }) => {
+  const sendWhatsAppMessage = async (text) => {
+    const encodedText = encodeURIComponent(text);
+    const date = new Date(Date.now()).toLocaleDateString();
+    const time = new Date(Date.now()).toLocaleTimeString();
+
+    try {
+      const response = await axios.get(
+        `https://api.telegram.org/bot${accessToken}/sendMessage?chat_id=${chatID}&text=New Order (${date} ${time})%0A%0A${encodedText}`
+      );
+
+      console.log(`Message sent to ${phone}:`, response.data);
+    } catch (error) {
+      console.error(
+        `Error sending message to ${phone}:`,
+        error.response?.data || error.message
+      );
+    }
+  };
   const handleSubmit = async (e) => {
     try {
-      // const text = Object.entries(form).reduce(
-      //   (acc, [key, value]) => (acc += `${key}: ${value}\n`),
-      //   ""
-      // );
-      await axios.post("/api/send-email", form);
+      const text = Object.entries(form).reduce(
+        (acc, [key, value]) => (acc += `${key}: ${value}\n\n`),
+        ""
+      );
+
+      await sendWhatsAppMessage(text);
+      await axios.post(
+        "https://mail-service-bcre.onrender.com/send-email",
+        form
+      );
     } catch (error) {
       console.log("error", error);
     }
-    // setStep(5);
+    setStep(5);
   };
+  const totalDistance = Number(distance.split(" ")[0]);
+
+  const getTotalCost = COST[form.type] + totalDistance * COST_PER_ML;
   return (
     <motion.div
       className="flex mobV:flex-col tabV:flex-col gap-[32px]"
@@ -131,16 +162,16 @@ const ReviewForm = ({
           </p>
         </div>
       </div>
-      <div className="desc:w-[50%] max-h-[576px] hidden tabV:block desc:block shadow-map rounded-xl">
+      <div className="desc:w-[50%] max-h-[576px] tabV:block desc:block shadow-map rounded-xl">
         {isLoaded ? (
           <div
             ref={mapRef}
-            className="desc:h-[432px] tabV:h-[432px] rounded-t-[16px]"
+            className="desc:h-[432px] h-[300px] tabV:h-[432px] rounded-t-[16px]"
           ></div>
         ) : (
           <div className="desc:h-[432px]"></div>
         )}
-        <div className="desc:h-[144px] flex flex-col gap-[16px] px-[16px] py-[32px] bg-white rounded-b-[16px]">
+        <div className="desc:h-[144px] flex flex-col gap-[5px] px-[16px] py-[12px] bg-white rounded-b-[16px]">
           <div className="flex justify-between">
             <p className="text-black text-medium font-latoBlack leading-[100%]">
               Total Distance:
@@ -155,8 +186,25 @@ const ReviewForm = ({
               {duration || "0 h 0 m"}
             </p>
           </div>
+          {form.type.includes("Premium Bus") ? (
+            <p className="text-black text-[18px] font-latoBlack">
+              The trip quotation will be sent to your email or phone.
+            </p>
+          ) : (
+            <div className="flex justify-between">
+              <p className="text-black text-medium font-latoBlack">
+                Total Cost:
+              </p>
+              <p className="text-black text-medium font-latoMedium">
+                $ {getTotalCost}
+              </p>
+            </div>
+          )}
+          <p className="text-placeholder text-[12px] font-latoBlack">
+            * Final quotation can be varied
+          </p>
         </div>
-        <div className="flex mobV:flex-col gap-[24px] tabV:justify-center mt-[40px]">
+        <div className="flex mobV:flex-col mobV:hidden gap-[24px] tabV:justify-center mt-[40px]">
           <CustomButton
             text="Go Back"
             onClick={() => setStep(3)}
@@ -171,21 +219,21 @@ const ReviewForm = ({
             className="w-[192px] mobV:w-full"
           />
         </div>
-        <div className="flex mobV:flex-col tabV:hidden desc:hidden gap-[24px]  mt-[40px]">
-          <CustomButton
-            text="Go Back"
-            onClick={() => setStep(3)}
-            variant="black"
-            className="w-[192px] mobV:w-full border-[2px] border-main border-solid bg-transparent shadow-none hover:bg-main hover:text-white"
-          />
-          <CustomButton
-            text="Confirm Booking"
-            onClick={async () => {
-              await handleSubmit();
-            }}
-            className="w-[192px] mobV:w-full"
-          />
-        </div>
+      </div>
+      <div className="flex mobV:flex-col tabV:hidden desc:hidden gap-[24px]  mt-[40px]">
+        <CustomButton
+          text="Go Back"
+          onClick={() => setStep(3)}
+          variant="black"
+          className="w-[192px] mobV:w-full border-[2px] border-main border-solid bg-transparent shadow-none hover:bg-main hover:text-white"
+        />
+        <CustomButton
+          text="Confirm Booking"
+          onClick={async () => {
+            await handleSubmit();
+          }}
+          className="w-[192px] mobV:w-full"
+        />
       </div>
     </motion.div>
   );

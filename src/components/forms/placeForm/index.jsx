@@ -137,7 +137,7 @@ const PlaceForm = ({
 
   return (
     <motion.div
-      className="flex tabV:flex-col gap-[32px]"
+      className="flex mobV:flex-col tabV:flex-col gap-[32px]"
       variants={container}
       initial="hidden"
       animate="visible"
@@ -388,7 +388,7 @@ const PlaceForm = ({
           );
         }}
       </Formik>
-      <div className="desc:w-[50%] max-h-[576px] hidden tabV:block desc:block shadow-map rounded-xl">
+      <div className="desc:w-[50%] max-h-[576px] tabV:block desc:block shadow-map rounded-xl">
         {isLoaded ? (
           <div ref={mapRef} className="h-[432px] rounded-t-[16px]"></div>
         ) : (

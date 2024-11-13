@@ -5,7 +5,10 @@
     "rewrites": [
       {
         "source": "/api/send-email",
-        "function": "sendEmailFunction"
+        "run": {
+          "serviceId": "sendEmailFunction",
+          "region": "us-central1"
+        }
       }
     ]
   },

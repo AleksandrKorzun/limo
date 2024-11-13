@@ -66,7 +66,7 @@ const VehicleForm = ({ form, setForm, step, setStep }) => {
                   <li
                     key={passengers}
                     className={`flex mobV:flex-col items-center p-[16px] rounded-[16px] ${
-                      title === form.type
+                      title.includes(form.type)
                         ? "border-main border-[2px]"
                         : "border-none"
                     }`}
@@ -103,7 +103,7 @@ const VehicleForm = ({ form, setForm, step, setStep }) => {
                           setForm({ ...form, type: title });
                         }}
                         className={`mt-auto border-[2px] border-solid border-main px-[24px] py-[8px] rounded-[8px] font-latoBlack text-small hover:bg-main hover:text-white transition-colors duration-300 ${
-                          title === form.type
+                          title.includes(form.type)
                             ? "bg-main text-accent"
                             : "bg-transparent text-main"
                         }`}

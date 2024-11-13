@@ -4,17 +4,30 @@ import React from "react";
 import { Link } from "react-scroll";
 import Text from "../ui/text";
 import Container from "../container";
+import { motion } from "framer-motion";
+
+const hoverVariants = {
+  initial: { top: 0, opacity: 1 },
+  hover: { top: -25, opacity: 0, transition: { duration: 0.3 } },
+};
+
+const hoverTextVariants = {
+  initial: { top: 25, opacity: 0 },
+  hover: { top: 0, opacity: 1, transition: { duration: 0.3 } },
+};
 
 const Footer = () => {
   return (
-    <div className="w-full bg-footer px-[24px] pt-[64px] pb-[32px] rounded-tr-[24px] rounded-tl-[24px]">
+    <div className="w-full bg-footer px-[24px] pt-[64px] mobV:pb-[50px] pb-[32px] rounded-tr-[24px] rounded-tl-[24px]">
       <a id="Contact" className="invisible"></a>
       <Container>
         <nav className="mx-auto pb-[32px] border-b-[1px] border-b-solid border-background">
           <ul className="flex justify-center items-center gap-[32px] desc:gap-[48px]">
             {NAV.map((item, index) => (
-              <li
+              <motion.li
                 key={item}
+                initial="initial"
+                whileHover="hover"
                 className="flex justify-center items-center w-[83px] h-[40px] font-latoBold text-small text-white leading-3 cursor-pointer"
               >
                 <Link
@@ -23,10 +36,22 @@ const Footer = () => {
                   smooth={true}
                   offset={-100}
                   duration={1000}
+                  className="relative"
                 >
-                  {item}
+                  <motion.span
+                    className="absolute translate-y-[-50%] translate-x-[-50%] left-0 top-1/2"
+                    variants={hoverVariants}
+                  >
+                    {item}
+                  </motion.span>
+                  <motion.span
+                    className="absolute translate-y-[-50%] translate-x-[-50%] left-0 top-1/2"
+                    variants={hoverTextVariants}
+                  >
+                    {item}
+                  </motion.span>
                 </Link>
-              </li>
+              </motion.li>
             ))}
           </ul>
         </nav>
@@ -59,7 +84,7 @@ const Footer = () => {
               <a
                 href={value}
                 target="_blank"
-                className="text-background text-small mobV:text-medium font-latoBold"
+                className="text-background text-small mobV:text-medium font-latoBold  hover:text-accent cursor-pointer transition-colors duration-300 "
               >
                 {title}
               </a>

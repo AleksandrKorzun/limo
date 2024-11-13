@@ -28,6 +28,7 @@ jobs:
           NEXT_PUBLIC_REACT_APP_MAP_API_KEY: ${{ secrets.NEXT_PUBLIC_REACT_APP_MAP_API_KEY }}
           NEXT_PUBLIC_REACT_APP_EMAIL_API_KEY: ${{ secrets.NEXT_PUBLIC_REACT_APP_EMAIL_API_KEY }}
           NEXT_PUBLIC_REACT_APP_EMAIL_SECRET_KEY: ${{ secrets.NEXT_PUBLIC_REACT_APP_EMAIL_SECRET_KEY }}
+          NEXT_PUBLIC_REACT_APP_TELEGRAM_API_KEY: ${{ secrets.NEXT_PUBLIC_REACT_APP_TELEGRAM_API_KEY }}
 
       # Deploy to Firebase Hosting
       - uses: FirebaseExtended/action-hosting-deploy@v0
@@ -38,6 +39,6 @@ jobs:
           projectId: black-lion-limo
 
       # Deploy Firebase Functions
-      - run: npm run deploy:functions
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      # - run: npm run deploy:functions
+      #   env:
+      #     FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

@@ -48,7 +48,7 @@ module.exports = {
         middle: "32px",
         big: "48px",
         tall: "64px",
-        mega: "80px",
+        mega: "70px",
       },
       fontWeight: {
         normal: 400,

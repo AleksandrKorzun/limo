@@ -63,13 +63,13 @@ const SectionReview = () => {
             </div>
           </div>
         </Swiper>
-        <div className="flex flex-col gap-[16px] desc:flex-row desc:gap-[32px] tabV:mt-[104px] desc:mt-[104px]">
+        <div className="flex flex-col gap-[16px] desc:flex-row desc:justify-between desc:gap-[32px] tabV:mt-[104px] desc:mt-[104px]">
           <Text
             text="Elevate Your Journey with Lion Limousine Luxury Awaits"
             className="text-[48px] leading-[56px] mb-[40px] tabV:text-[64px] tabV:leading-[72px] desc:text-[72px] desc:mb-0 desc:w-[752px] desc:leading-[80px]"
           />
-          <div className="flex flex-col gap-[16px] desc:flex-row-reverse desc:py-[40px] desc:gap-[55px]">
-            <CustomButton text="Call us" className="w-full desc:w-[192px]" />
+          <div className="flex flex-col gap-[16px] ">
+            <CustomButton text="Call us" className="w-full desc:w-[292px]" />
             <Text
               text="or"
               className="text-center desc:text-medium desc:my-auto"
@@ -77,7 +77,7 @@ const SectionReview = () => {
             <CustomButton
               text="Book a Transfer"
               name="booked"
-              className="w-full desc:w-[192px] desc:mt-auto"
+              className="w-full desc:w-[292px]"
             />
           </div>
         </div>
