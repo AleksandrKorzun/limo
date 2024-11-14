@@ -49,7 +49,13 @@ const ReviewForm = ({
       );
     }
   };
+  const totalDistance = Number(distance.split(" ")[0]);
+
+  const getTotalCost = COST[form.type] + totalDistance * COST_PER_ML;
+
   const handleSubmit = async (e) => {
+    form.cost = getTotalCost;
+    form.distance = distance;
     try {
       const text = Object.entries(form).reduce(
         (acc, [key, value]) => (acc += `${key}: ${value || "---"}\n\n`),
@@ -66,9 +72,7 @@ const ReviewForm = ({
     }
     setStep(5);
   };
-  const totalDistance = Number(distance.split(" ")[0]);
 
-  const getTotalCost = COST[form.type] + totalDistance * COST_PER_ML;
   return (
     <motion.div
       className="flex mobV:flex-col tabV:flex-col gap-[32px]"
