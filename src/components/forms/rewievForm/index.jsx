@@ -18,7 +18,7 @@ const container = {
   },
 };
 const accessToken = process.env.NEXT_PUBLIC_REACT_APP_TELEGRAM_API_KEY;
-const chatID = 291340498;
+const chatIDs = [291340498, 316853886];
 // const phoneNumber = ["380677310942", "16196381625"];
 const phoneNumber = ["380677310942"];
 
@@ -35,18 +35,19 @@ const ReviewForm = ({
     const encodedText = encodeURIComponent(text);
     const date = new Date(Date.now()).toLocaleDateString();
     const time = new Date(Date.now()).toLocaleTimeString();
+    for (const chatID of chatIDs) {
+      try {
+        const response = await axios.get(
+          `https://api.telegram.org/bot${accessToken}/sendMessage?chat_id=${chatID}&text=New Order (${date} ${time})%0A%0A${encodedText}`
+        );
 
-    try {
-      const response = await axios.get(
-        `https://api.telegram.org/bot${accessToken}/sendMessage?chat_id=${chatID}&text=New Order (${date} ${time})%0A%0A${encodedText}`
-      );
-
-      // console.log(`Message sent to ${phone}:`, response.data);
-    } catch (error) {
-      console.error(
-        // `Error sending message to ${phone}:`,
-        error.response?.data || error.message
-      );
+        // console.log(`Message sent to ${phone}:`, response.data);
+      } catch (error) {
+        console.error(
+          // `Error sending message to ${phone}:`,
+          error.response?.data || error.message
+        );
+      }
     }
   };
   const totalDistance = Number(distance.split(" ")[0]);
