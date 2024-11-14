@@ -41,10 +41,10 @@ const ReviewForm = ({
         `https://api.telegram.org/bot${accessToken}/sendMessage?chat_id=${chatID}&text=New Order (${date} ${time})%0A%0A${encodedText}`
       );
 
-      console.log(`Message sent to ${phone}:`, response.data);
+      // console.log(`Message sent to ${phone}:`, response.data);
     } catch (error) {
       console.error(
-        `Error sending message to ${phone}:`,
+        // `Error sending message to ${phone}:`,
         error.response?.data || error.message
       );
     }
@@ -52,7 +52,7 @@ const ReviewForm = ({
   const handleSubmit = async (e) => {
     try {
       const text = Object.entries(form).reduce(
-        (acc, [key, value]) => (acc += `${key}: ${value}\n\n`),
+        (acc, [key, value]) => (acc += `${key}: ${value || "---"}\n\n`),
         ""
       );
 
