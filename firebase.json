@@ -1,28 +1,6 @@
 {
   "hosting": {
     "public": "out",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "rewrites": [
-      {
-        "source": "/api/send-email",
-        "run": {
-          "serviceId": "sendEmailFunction",
-          "region": "us-central1"
-        }
-      }
-    ]
-  },
-  "functions": [
-    {
-      "source": "functions",
-      "codebase": "default",
-      "ignore": [
-        "node_modules",
-        ".git",
-        "firebase-debug.log",
-        "firebase-debug.*.log",
-        "*.local"
-      ]
-    }
-  ]
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  }
 }
