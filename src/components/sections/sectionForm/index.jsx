@@ -14,6 +14,26 @@ import Final from "@/components/forms/final";
 import ReviewForm from "@/components/forms/rewievForm";
 
 const libraries = ["core", "map", "places", "marker"];
+const initialForm = {
+  pick_up_location: "",
+  drop_off_location: "",
+  type_transfer: "Point to Point",
+  date: "",
+  time: "",
+  way_points: [],
+  passengers: 1,
+  suitcase: 1,
+  child_seat: 1,
+  car: "",
+  type: "Premium Sedan",
+  first_name: "",
+  second_name: "",
+  email_address: "",
+  phone_number: "",
+  comments: "",
+  contact_by_phone: false,
+  contact_by_email: false,
+};
 
 const SectionForm = () => {
   const [step, setStep] = useState(1);
@@ -26,27 +46,11 @@ const SectionForm = () => {
   const [distance, setDistance] = useState("");
   const [duration, setDuration] = useState("");
 
-  const [form, setForm] = useState({
-    pick_up_location: "",
-    drop_off_location: "",
-    type_transfer: "Point to Point",
-    date: "",
-    time: "",
-    way_points: [],
-    passengers: 1,
-    suitcase: 1,
-    child_seat: 1,
-    car: "",
-    type: "Premium Sedan",
-    first_name: "",
-    second_name: "",
-    email_address: "",
-    phone_number: "",
-    comments: "",
-    contact_by_phone: false,
-    contact_by_email: false,
-  });
-
+  const [form, setForm] = useState(initialForm);
+  const resetForm = () => {
+    setForm(initialForm);
+    console.log("123", 123);
+  };
   const { isLoaded } = useJsApiLoader({
     id: "black-limo",
     googleMapsApiKey: process.env.NEXT_PUBLIC_REACT_APP_MAP_API_KEY,
@@ -162,6 +166,7 @@ const SectionForm = () => {
             form={form}
             onSubmitForm={onSubmitForm}
             setForm={setForm}
+            resetForm={resetForm}
           />
         );
         break;
@@ -196,6 +201,7 @@ const SectionForm = () => {
             setForm={setForm}
             duration={duration}
             distance={distance}
+            resetForm={resetForm}
           />
         );
         break;
@@ -213,7 +219,7 @@ const SectionForm = () => {
         <a id="book-form" className="invisible"></a>
         <Title text="Booking Form" />
         <div className="bg-backgroundSecondary px-[16px] py-[48px] desc:px-[112px] desc:py-[56px] mobV:px-[16px] mobV:py-[48px] rounded-[16px]">
-          {step !== 4 && <Stepper step={step} />}
+          {step !== 4 && <Stepper step={step} setStep={setStep} />}
           {getForm()}
         </div>
       </Container>

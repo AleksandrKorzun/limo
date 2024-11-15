@@ -1,7 +1,7 @@
 import { BOOKING_STEPS } from "@/data/constant";
 import React from "react";
 
-const Stepper = ({ step }) => {
+const Stepper = ({ step, setStep }) => {
   return (
     <div className="mb-[32px] flex flex-col">
       <ul className="w-full relative flex flex-row justify-center mb-[32px]">
@@ -9,9 +9,10 @@ const Stepper = ({ step }) => {
           <li className="group" key={`step-${num}-step`}>
             <div className="w-full flex items-center text-medium align-middle">
               <span
-                className={`w-[48px] h-[48px] desc:w-[64px] desc:h-[64px] flex justify-center items-center font-medium text-main rounded-full ${
+                className={`w-[48px] h-[48px] desc:w-[64px] cursor-pointer desc:h-[64px] flex justify-center items-center font-medium text-main rounded-full ${
                   step >= num ? "bg-yellow" : "bg-white"
                 }`}
+                onClick={() => setStep(num)}
               >
                 {num}
               </span>

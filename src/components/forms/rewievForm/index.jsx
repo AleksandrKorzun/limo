@@ -19,8 +19,7 @@ const container = {
 };
 const accessToken = process.env.NEXT_PUBLIC_REACT_APP_TELEGRAM_API_KEY;
 const chatIDs = [291340498, 316853886];
-// const phoneNumber = ["380677310942", "16196381625"];
-const phoneNumber = ["380677310942"];
+// const chatIDs = [291340498];
 
 const ReviewForm = ({
   step,
@@ -30,7 +29,9 @@ const ReviewForm = ({
   isLoaded,
   duration,
   distance,
+  resetForm,
 }) => {
+  const [isSent, setIsSent] = React.useState(false);
   const sendWhatsAppMessage = async (text) => {
     const encodedText = encodeURIComponent(text);
     const date = new Date(Date.now()).toLocaleDateString();
@@ -58,8 +59,9 @@ const ReviewForm = ({
     form.cost = getTotalCost;
     form.distance = distance;
     try {
+      setIsSent(true);
       const text = Object.entries(form).reduce(
-        (acc, [key, value]) => (acc += `${key}: ${value || "---"}\n\n`),
+        (acc, [key, value]) => (acc += `${key}: ${value}\n\n`),
         ""
       );
 
@@ -68,7 +70,10 @@ const ReviewForm = ({
         "https://mail-service-bcre.onrender.com/send-email",
         form
       );
+      resetForm();
+      setIsSent(false);
     } catch (error) {
+      setIsSent(false);
       console.log("error", error);
     }
     setStep(5);
@@ -176,18 +181,18 @@ const ReviewForm = ({
         ) : (
           <div className="desc:h-[432px]"></div>
         )}
-        <div className="desc:h-[144px] flex flex-col gap-[5px] px-[16px] py-[12px] bg-white rounded-b-[16px]">
+        <div className="desc:h-[144px] flex flex-col gap-[3px] px-[16px] py-[12px] bg-white rounded-b-[16px]">
           <div className="flex justify-between">
-            <p className="text-black text-medium font-latoBlack leading-[100%]">
+            <p className="text-black text-[22px] font-latoBlack leading-[100%]">
               Total Distance:
             </p>
-            <p className="text-black text-medium font-latoMedium">
+            <p className="text-black text-[22px] font-latoMedium">
               {distance || "0 mi"}
             </p>
           </div>
           <div className="flex justify-between">
-            <p className="text-black text-medium font-latoBlack">Total Time:</p>
-            <p className="text-black text-medium font-latoMedium">
+            <p className="text-black text-[22px] font-latoBlack">Total Time:</p>
+            <p className="text-black text-[22px] font-latoMedium">
               {duration || "0 h 0 m"}
             </p>
           </div>
@@ -197,10 +202,10 @@ const ReviewForm = ({
             </p>
           ) : (
             <div className="flex justify-between">
-              <p className="text-black text-medium font-latoBlack">
+              <p className="text-black text-[22px] font-latoBlack">
                 Total Cost:
               </p>
-              <p className="text-black text-medium font-latoMedium">
+              <p className="text-black text-[22px] font-latoMedium">
                 $ {getTotalCost}
               </p>
             </div>
@@ -222,6 +227,8 @@ const ReviewForm = ({
               handleSubmit();
             }}
             className="w-[192px] mobV:w-full"
+            isLoad={isSent}
+            isDisabled={isSent}
           />
         </div>
       </div>
@@ -238,6 +245,8 @@ const ReviewForm = ({
             await handleSubmit();
           }}
           className="w-[192px] mobV:w-full"
+          isLoad={isSent}
+          isDisabled={isSent}
         />
       </div>
     </motion.div>
