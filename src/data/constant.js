@@ -170,8 +170,8 @@ export const REVIEW = [
 export const CONTACT = [
   { title: "Illinois", value: "Chicago" },
   { title: "Illinois", value: "Naperville" },
-  { title: "Phone", value: "+1 312 123 4567" },
-  { title: "Email", value: "help@transfer.com" },
+  { title: "Phone", value: ["+1 331 260 2278", "+1 773 310 7546"] },
+  { title: "Email", value: ["BlackLionLimo@hotmail.com"] },
 ];
 
 export const SOCIAL = [

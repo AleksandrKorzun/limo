@@ -68,13 +68,31 @@ const Footer = () => {
               >
                 {title}
               </h2>
-              <p
-                className={`text-background text-[16px] w-auto ${
-                  i % 2 === 0 ? "mobV:text-start" : "mobV:text-end"
-                }`}
-              >
-                {value}
-              </p>
+              <div className="flex flex-col">
+                {Array.isArray(value) ? (
+                  value.map((v) => (
+                    <a
+                      key={v}
+                      href={`${title === "Phone" ? "tel" : "mailto"}:${v
+                        .split(" ")
+                        .join("")}`}
+                      className={`text-background text-[16px] w-auto ${
+                        i % 2 === 0 ? "mobV:text-start" : "mobV:text-end"
+                      }`}
+                    >
+                      {v}
+                    </a>
+                  ))
+                ) : (
+                  <p
+                    className={`text-background text-[16px] w-auto ${
+                      i % 2 === 0 ? "mobV:text-start" : "mobV:text-end"
+                    }`}
+                  >
+                    {value}
+                  </p>
+                )}
+              </div>
             </div>
           ))}
         </div>

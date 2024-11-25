@@ -69,7 +69,16 @@ const SectionReview = () => {
             className="text-[48px] leading-[56px] mb-[40px] tabV:text-[64px] tabV:leading-[72px] desc:text-[72px] desc:mb-0 desc:w-[752px] desc:leading-[80px]"
           />
           <div className="flex flex-col gap-[16px] ">
-            <CustomButton text="Call us" className="w-full desc:w-[292px]" />
+            <a
+              text="Call us"
+              as="a"
+              className={`font-latoBlack flex items-center justify-center text-small fw-black leading-[125%] h-[48px] rounded-[8px] bg-accent shadow-button  cursor-pointer transition-colors duration-300 w-full desc:w-[292px] 
+              
+                  hover:bg-yellow`}
+              href="tel:+13312602278"
+            >
+              Call us
+            </a>
             <Text
               text="or"
               className="text-center desc:text-medium desc:my-auto"
