@@ -1,9 +1,22 @@
 "use client";
+import DeleteIcon from "@/assets/icons/DeleteIcon";
+import EditIcon from "@/assets/icons/Edit";
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 
 const AutoCompleteInput = forwardRef(
   (
-    { label, type, placeholder, value, onChange, className, isLoaded, error },
+    {
+      label,
+      type,
+      placeholder,
+      value,
+      onChange,
+      className,
+      isLoaded,
+      error,
+      icon,
+      handleIcon,
+    },
     ref
   ) => {
     const [autoComplete, setAutoComplete] = useState(null);
@@ -42,15 +55,21 @@ const AutoCompleteInput = forwardRef(
             {label}
           </label>
         )}
-        <input
-          ref={placeAutoCompleteRef}
-          type={type}
-          placeholder={placeholder}
-          value={inputValue} // Show the current inputValue
-          onChange={handleChange} // Update inputValue on change
-          className={`p-[8px] bg-input rounded-[8px] `}
-          autoComplete="off"
-        />
+        <div className="w-full flex items-center">
+          <input
+            ref={placeAutoCompleteRef}
+            type={type}
+            placeholder={placeholder}
+            value={inputValue} // Show the current inputValue
+            onChange={handleChange} // Update inputValue on change
+            className={`p-[8px] w-full bg-input rounded-[8px] `}
+            autoComplete="off"
+          />
+          {icon && (
+            <DeleteIcon className="cursor-pointer" onClick={handleIcon} />
+          )}
+        </div>
+
         {error && label && !inputValue && (
           <p className="text-[#FD7542]">{error}</p>
         )}

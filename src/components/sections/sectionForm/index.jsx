@@ -23,7 +23,7 @@ const initialForm = {
   way_points: [],
   passengers: 1,
   suitcase: 1,
-  child_seat: 1,
+  child_seat: 0,
   car: "",
   type: "Premium Sedan",
   first_name: "",
@@ -45,8 +45,9 @@ const SectionForm = () => {
   const [directionsRenderer, setDirectionsRenderer] = useState(null);
   const [distance, setDistance] = useState("");
   const [duration, setDuration] = useState("");
-
   const [form, setForm] = useState(initialForm);
+  console.log("distance", distance);
+  console.log("duration", duration);
   const resetForm = () => {
     setForm(initialForm);
     console.log("123", 123);
@@ -78,9 +79,25 @@ const SectionForm = () => {
         directionsRenderer.setDirections(result);
 
         const route = result.routes[0];
-        const { distance, duration } = route.legs[0];
-        setDistance(distance.text); // e.g., "12.3 mi"
-        setDuration(duration.text); // e.g., "30 mins"
+
+        // Підсумовуємо дистанцію та тривалість для всіх сегментів маршруту
+        let totalDistance = 0;
+        let totalDuration = 0;
+
+        route.legs.forEach((leg) => {
+          totalDistance += leg.distance.value; // у метрах
+          totalDuration += leg.duration.value; // у секундах
+        });
+
+        const distanceText = (totalDistance / 1609.34).toFixed(1) + " mi";
+        const hours = Math.floor(totalDuration / 3600); // кількість годин
+        const minutes = Math.floor((totalDuration % 3600) / 60); // залишок хвилин
+
+        // Форматування тривалості
+        const durationText = `${hours > 0 ? hours + " h " : ""}${minutes} m`;
+
+        setDistance(distanceText);
+        setDuration(durationText);
       } else {
         console.error("Error fetching directions:", result);
       }
@@ -124,9 +141,23 @@ const SectionForm = () => {
           directionsRenderer.setDirections(result);
 
           const route = result.routes[0];
-          const { distance, duration } = route.legs[0];
-          setDistance(distance.text); // e.g., "12.3 mi"
-          setDuration(duration.text); // e.g., "30 mins"
+
+          let totalDistance = 0;
+          let totalDuration = 0;
+
+          route.legs.forEach((leg) => {
+            totalDistance += leg.distance.value; // у метрах
+            totalDuration += leg.duration.value; // у секундах
+          });
+
+          const distanceText = (totalDistance / 1609.34).toFixed(1) + " mi";
+          const hours = Math.floor(totalDuration / 3600); // кількість годин
+          const minutes = Math.floor((totalDuration % 3600) / 60); // залишок хвилин
+
+          const durationText = `${hours > 0 ? hours + " h " : ""}${minutes} m`;
+
+          setDistance(distanceText);
+          setDuration(durationText);
         } else {
           console.error("Error fetching directions:", result);
         }

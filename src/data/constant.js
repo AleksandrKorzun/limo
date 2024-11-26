@@ -266,6 +266,7 @@ export const VEHICLES_FORM = [
     name: "child_seat",
     placeholder: "1",
     options: [
+      { title: 0, value: 0 },
       { title: 1, value: 1 },
       { title: 2, value: 2 },
       { title: 3, value: 3 },

@@ -59,7 +59,7 @@ const PlaceForm = ({
   form,
   setForm,
 }) => {
-  const [time, setTime] = useState(null);
+  const [time, setTime] = useState(form.time);
 
   const [isOpen, setIsOpen] = useState(false);
   const [customTime, setCustomTime] = useState({
@@ -134,7 +134,22 @@ const PlaceForm = ({
     setIsOpen(false);
     return newTime;
   };
+  const parseTimeToDate = (timeString) => {
+    const [time, modifier] = timeString.split(" ");
+    let [hours, minutes] = time.split(":").map(Number);
 
+    if (modifier === "PM" && hours !== 12) hours += 12;
+    if (modifier === "AM" && hours === 12) hours = 0;
+
+    const now = new Date();
+    now.setHours(hours, minutes, 0, 0);
+    return now;
+  };
+  const parseDateString = (dateString) => {
+    const [day, month, year] = dateString.split("/").map(Number);
+    return new Date(year, month - 1, day); // Місяці у JS рахуються з 0
+  };
+  console.log("time", form.date);
   return (
     <motion.div
       className="flex mobV:flex-col tabV:flex-col gap-[32px]"
@@ -146,11 +161,11 @@ const PlaceForm = ({
       <Formik
         initialValues={{
           type_transfer: form.type_transfer,
-          date: "",
-          time: "",
-          pick_up_location: "",
-          drop_off_location: "",
-          way_points: [],
+          date: form.date ? parseDateString(form.date) : "",
+          time: form.time ? parseTimeToDate(form.time) : "",
+          pick_up_location: form.pick_up_location,
+          drop_off_location: form.drop_off_location,
+          way_points: form.way_points || [],
         }}
         validationSchema={placeFormSchema}
         onSubmit={(values) => {
@@ -159,6 +174,8 @@ const PlaceForm = ({
         }}
       >
         {({ values, setFieldValue, validateForm, errors }) => {
+          console.log("errors", errors);
+          console.log("errors", values);
           return (
             <form className="flex flex-col gap-[40px] desc:w-[50%]">
               <p className="text-main font-latoMedium text-medium leading-[130%] pb-[8px] border-b-[1px] border-b-solid border-b-[#D8D8D8]">
@@ -190,6 +207,7 @@ const PlaceForm = ({
                     placeholderText="Select date"
                     selected={values.date}
                     minDate={new Date()}
+                    value={values.date}
                     renderCustomHeader={({
                       date,
                       decreaseMonth,
@@ -325,6 +343,24 @@ const PlaceForm = ({
                     key={`Way points Location ${idx}`}
                     placeholder="Select"
                     value={form.way_points[idx]}
+                    icon
+                    handleIcon={() => {
+                      setFieldValue(
+                        "way_points",
+                        values.way_points.filter((_, i) => i !== idx)
+                      );
+                      setForm((prev) => ({
+                        ...prev,
+                        way_points: values.way_points.filter(
+                          (_, i) => i !== idx
+                        ),
+                      }));
+                      showRoute(
+                        values.pick_up_location,
+                        values.drop_off_location,
+                        values.way_points.filter((_, i) => i !== idx)
+                      );
+                    }}
                     onChange={(v) => {
                       setFieldValue(
                         "way_points",

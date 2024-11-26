@@ -9,12 +9,12 @@ const SectionHero = () => {
     <section className="h-[100dvh]  mobV:bg-[url('/images/mob/hero_bg.png')] mobH:bg-[url('/images/desc/hero_bg.png')] tabV:bg-r tabH:bg-[url('/images/desc/hero_bg.png')] tabV:bg-[url('/images/desc/hero_bg.png')] desc:bg-[url('/images/desc/hero_bg.png')] bg-cover">
       <Container className="relative">
         <h2 className="font-ebSemiBold mobV:pt-[158px] mobH:pt-[116px] tabV:pt-[224px] tabH:pt-[204px] desc:pt-[200px] mobV:mb-[24px] mobH:mb-[0] mobH:leading-[130%] mobV:text-middle mobH:text-middle tabV:text-tall desc:text-mega  tabH:text-tall tabV:text-center tabH:text-center desc:text-center tabV:px-[90px] tabH:px-[250px] desc:px-[250px] desc:mb-[24px] text-white">
-          Black Lion Limo
+          Black Lion Limousine
           <br /> Your Premier Chicago Transportation
         </h2>
         <h3 className="font-latoMedium text-small desc:text-medium mobV:mb-[32px] tabV:mb-[40px] mobH:mb-[16px] desc:mb-[50px] tabV:px-[140px] tabH:px-[300px] desc:px-[250px] tabV:text-center tabH:text-center desc:text-center text-white">
-          Black Lion Limo is a premier limousine service provider located in
-          western suburbs of Chicago. With a commitment to excellence and
+          Black Lion Limousine is a premier limousine service provider located
+          in western suburbs of Chicago. With a commitment to excellence and
           customer satisfaction, we offer a wide range of transportation
           solutions for both corporate and personal needs
         </h3>
