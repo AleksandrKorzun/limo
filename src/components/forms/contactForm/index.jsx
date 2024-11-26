@@ -122,7 +122,6 @@ const ContactForm = ({ step, setStep, form, setForm }) => {
                     checked={form.contact_by_email}
                     value={form.contact_by_email}
                     onChange={() => {
-                      console.log("form", form);
                       setFieldValue(
                         "contact_by_email",
                         !values.contact_by_email

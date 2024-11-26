@@ -41,8 +41,6 @@ const ReviewForm = ({
         const response = await axios.get(
           `https://api.telegram.org/bot${accessToken}/sendMessage?chat_id=${chatID}&text=New Order (${date} ${time})%0A%0A${encodedText}`
         );
-
-        // console.log(`Message sent to ${phone}:`, response.data);
       } catch (error) {
         console.error(
           // `Error sending message to ${phone}:`,
@@ -74,7 +72,6 @@ const ReviewForm = ({
       setIsSent(false);
     } catch (error) {
       setIsSent(false);
-      console.log("error", error);
     }
     setStep(5);
   };

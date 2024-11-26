@@ -46,11 +46,8 @@ const SectionForm = () => {
   const [distance, setDistance] = useState("");
   const [duration, setDuration] = useState("");
   const [form, setForm] = useState(initialForm);
-  console.log("distance", distance);
-  console.log("duration", duration);
   const resetForm = () => {
     setForm(initialForm);
-    console.log("123", 123);
   };
   const { isLoaded } = useJsApiLoader({
     id: "black-limo",

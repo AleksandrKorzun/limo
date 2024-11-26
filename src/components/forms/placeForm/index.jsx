@@ -149,7 +149,6 @@ const PlaceForm = ({
     const [day, month, year] = dateString.split("/").map(Number);
     return new Date(year, month - 1, day); // Місяці у JS рахуються з 0
   };
-  console.log("time", form.date);
   return (
     <motion.div
       className="flex mobV:flex-col tabV:flex-col gap-[32px]"
@@ -174,8 +173,6 @@ const PlaceForm = ({
         }}
       >
         {({ values, setFieldValue, validateForm, errors }) => {
-          console.log("errors", errors);
-          console.log("errors", values);
           return (
             <form className="flex flex-col gap-[40px] desc:w-[50%]">
               <p className="text-main font-latoMedium text-medium leading-[130%] pb-[8px] border-b-[1px] border-b-solid border-b-[#D8D8D8]">
@@ -188,7 +185,6 @@ const PlaceForm = ({
                   type="select"
                   name="type_transfer"
                   onChange={(v) => {
-                    console.log("v", v);
                     setFieldValue("type_transfer", v);
                     setForm((prev) => ({ ...prev, type_transfer: v }));
                   }}
@@ -413,8 +409,6 @@ const PlaceForm = ({
                 type="button"
                 onClick={async () => {
                   const formErr = await validateForm();
-                  console.log("errors", formErr);
-                  console.log("values", values);
                   if (Object.values(errors).length) return;
                   // handleSubmit();
                   setStep(2);

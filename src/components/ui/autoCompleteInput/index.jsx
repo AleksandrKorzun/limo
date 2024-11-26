@@ -33,7 +33,6 @@ const AutoCompleteInput = forwardRef(
         gAutoComplete.addListener("place_changed", () => {
           const place = gAutoComplete.getPlace();
           if (place && place.formatted_address) {
-            console.log("place", place);
             setInputValue(place.formatted_address); // Set inputValue to the selected place's name
             onChange(place.formatted_address); // Update the parent state with the selected place's name
           }
