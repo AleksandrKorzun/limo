@@ -22,7 +22,7 @@ const CustomButton = ({
       type="button"
       name={name}
       disabled={isDisabled}
-      className={`font-latoBlack flex items-center justify-center text-small fw-black leading-[125%] h-[48px] rounded-[8px] bg-accent shadow-button  cursor-pointer transition-colors duration-300 ${className} ${
+      className={`font-latoBlack flex items-center justify-center text-small text-black leading-[125%] h-[48px] rounded-[8px] bg-accent shadow-button  cursor-pointer transition-colors duration-300 ${className} ${
         variant === "black"
           ? "hover:bg-main hover:text-white"
           : "hover:bg-yellow"

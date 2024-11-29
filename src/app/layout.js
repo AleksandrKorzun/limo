@@ -34,11 +34,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* <Script src="/scripts/map/index.js" />
-        <script
-          async
-          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_REACT_APP_MAP_API_KEY}&callback=console.debug&libraries=maps,marker&v=beta`}
-        ></script> */}
+        <meta
+          property="og:title"
+          content="Black Lion Limousine: Your Premier Chicago Transportation"
+        />
+        <meta
+          property="og:description"
+          content="Black Lion Limousine is a premier limousine service provider located in western suburbs of Chicago. With a commitment to excellence and customer satisfaction, we offer a wide range of transportation solutions for both corporate and personal needs."
+        />
+        <meta property="og:image" content="/images/desc/title.png" />
+        <meta property="og:url" content="https://blacklionlimo.com" />
+        <meta property="og:type" content="website" />
       </head>
       <body
         className={`${latoBlack.variable} ${lato.variable} ${latoBold.variable} ${EbSemiBold.variable} antialiased`}

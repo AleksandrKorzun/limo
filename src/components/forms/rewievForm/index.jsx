@@ -63,11 +63,12 @@ const ReviewForm = ({
         ""
       );
 
-      await sendWhatsAppMessage(text);
-      await axios.post(
+      axios.post(
         "https://mail-service-bcre.onrender.com/send-email",
+        // "http://localhost:8080/send-email",
         form
       );
+      await sendWhatsAppMessage(text);
       resetForm();
       setIsSent(false);
     } catch (error) {

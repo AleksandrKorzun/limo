@@ -7,7 +7,7 @@ import Select from "@/components/ui/select";
 import { BOOKING_STEPS, FLEET, VEHICLES_FORM } from "@/data/constant";
 import { Formik } from "formik";
 import Image from "next/image";
-import React from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
 
 const container = {
@@ -23,6 +23,7 @@ const container = {
 };
 
 const VehicleForm = ({ form, setForm, step, setStep }) => {
+  const buttonRef = useRef(null);
   return (
     <motion.div
       className="flex flex-col gap-[40px] justify-between"
@@ -99,6 +100,11 @@ const VehicleForm = ({ form, setForm, step, setStep }) => {
                       <button
                         type="button"
                         onClick={() => {
+                          if (buttonRef.current) {
+                            buttonRef.current.scrollIntoView({
+                              behavior: "smooth",
+                            });
+                          }
                           setFieldValue("type", title);
                           setForm({ ...form, type: title });
                         }}
@@ -129,7 +135,10 @@ const VehicleForm = ({ form, setForm, step, setStep }) => {
             </form>
           )}
         </Formik>
-        <div className="desc:w-[402px] h-fit px-[16px] py-[32px] desc:block shadow-map rounded-xl bg-white">
+        <div
+          className="desc:w-[402px] h-fit px-[16px] py-[32px] desc:block shadow-map rounded-xl bg-white"
+          ref={buttonRef}
+        >
           <div className="flex w-auto justify-between items-center pb-[8px] mb-[32px] border-b-[1px] border-input border-solid">
             <h3 className="font-latoMedium text-middle text-main">Summary</h3>
             <button

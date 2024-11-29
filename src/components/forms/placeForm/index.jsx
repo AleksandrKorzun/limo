@@ -262,14 +262,14 @@ const PlaceForm = ({
                   >
                     <div className="bg-[#dbdbdb] flex items-center gap-[8px]">
                       <div className="flex flex-col items-center w-full">
-                        <button type="button" onClick={decreaseHour}>
+                        <button type="button" onClick={increaseHour}>
                           <ArrowUpIcon className="w-[24px] h-[24px]" />
                         </button>
                         <span className="text-medium font-latoMedium text-main my-[8px] text-center w-full">
                           {customTime.hours}
                         </span>
 
-                        <button type="button" onClick={increaseHour}>
+                        <button type="button" onClick={decreaseHour}>
                           <ArrowDownCalendarIcon className="w-[24px] h-[24px]" />
                         </button>
                       </div>
@@ -277,13 +277,13 @@ const PlaceForm = ({
                         :
                       </span>
                       <div className="flex flex-col items-center w-full">
-                        <button type="button" onClick={decreaseMinute}>
+                        <button type="button" onClick={increaseMinute}>
                           <ArrowUpIcon className="w-[24px] h-[24px]" />
                         </button>
                         <span className="text-medium font-latoMedium text-main my-[8px] text-center w-full">
                           {customTime.minutes}
                         </span>
-                        <button type="button" onClick={increaseMinute}>
+                        <button type="button" onClick={decreaseMinute}>
                           <ArrowDownCalendarIcon className="w-[24px] h-[24px]" />
                         </button>
                       </div>

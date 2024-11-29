@@ -65,8 +65,8 @@ const SectionReview = () => {
         </Swiper>
         <div className="flex flex-col gap-[16px] desc:flex-row desc:justify-between desc:gap-[32px] tabV:mt-[104px] desc:mt-[104px]">
           <Text
-            text="Elevate Your Journey with Lion Limousine Luxury Awaits"
-            className="text-[48px] leading-[56px] mb-[40px] tabV:text-[64px] tabV:leading-[72px] desc:text-[72px] desc:mb-0 desc:w-[752px] desc:leading-[80px]"
+            text="Elevate Your Journey with Black Lion Limousine Luxury Awaits"
+            className="text-[48px] leading-[56px] mb-[48px] tabV:text-[64px] tabV:leading-[72px] desc:text-[66px] desc:mb-0 desc:w-[752px] desc:leading-[80px]"
           />
           <div className="flex flex-col gap-[16px] ">
             <a
