@@ -171,7 +171,7 @@ export const CONTACT = [
   { title: "Illinois", value: "Chicago" },
   { title: "Illinois", value: "Naperville" },
   { title: "Phone", value: ["+1 331 260 2278", "+1 773 310 7546"] },
-  { title: "Email", value: ["BlackLionLimo@hotmail.com"] },
+  { title: "Email", value: ["blacklionlimo001@gmail.com"] },
 ];
 
 export const SOCIAL = [
