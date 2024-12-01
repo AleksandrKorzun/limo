@@ -63,7 +63,7 @@ const ReviewForm = ({
         ""
       );
 
-      axios.post(
+      await axios.post(
         "https://mail-service-bcre.onrender.com/send-email",
         // "http://localhost:8080/send-email",
         form
