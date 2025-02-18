@@ -39,6 +39,10 @@ export default function RootLayout({ children }) {
           content="Black Lion Limousine: Your Premier Chicago Transportation"
         />
         <meta
+          name="keywords"
+          content="limousine rental Chicago, limousine service Chicago, wedding limousine Chicago, luxury car hire Chicago, airport limousine Chicago"
+        />
+        <meta
           property="og:description"
           content="Black Lion Limousine is a premier limousine service provider located in western suburbs of Chicago. With a commitment to excellence and customer satisfaction, we offer a wide range of transportation solutions for both corporate and personal needs."
         />
