@@ -59,7 +59,7 @@ export const ADVANTAGE = [
 
 export const FLEET = [
   {
-    img: "/images/desc/car1.png",
+    img: "/images/desc/car1.webp",
     title: "Premium Sedan",
     desc: "A luxurious sedan, perfect for individual or paired trips. A combination of comfort and elegance in every move.",
     specification: "*For individual and corporate clients.",
@@ -67,7 +67,7 @@ export const FLEET = [
     suitcase: "3 medium suitcases",
   },
   {
-    img: "/images/desc/car2.png",
+    img: "/images/desc/car2.webp",
     title: "Premium SUV",
     desc: "A spacious SUV with enhanced features for comfortable longer trips and seamless transfers for groups of up to 5 people.",
     specification: "*For groups and family trips.",
@@ -75,7 +75,7 @@ export const FLEET = [
     suitcase: "3 big and 2 medium suitcases",
   },
   {
-    img: "/images/desc/car3.png",
+    img: "/images/desc/car3.webp",
     title: "Premium Bus (14 people)",
     desc: "A comfortable and stylish minibus, ideal for corporate groups and small delegations. Up to 14 people with maximum comfort.",
     specification: "*For larger groups and corporate events.",

@@ -6,7 +6,7 @@ import React from "react";
 
 const SectionHero = () => {
   return (
-    <section className="h-[100dvh]  mobV:bg-[url('/images/mob/hero_bg.png')] mobH:bg-[url('/images/desc/hero_bg.png')] tabV:bg-r tabH:bg-[url('/images/desc/hero_bg.png')] tabV:bg-[url('/images/desc/hero_bg.png')] desc:bg-[url('/images/desc/hero_bg.png')] bg-cover">
+    <section className="h-[100dvh]  mobV:bg-[url('/images/mob/hero_bg.webp')] mobH:bg-[url('/images/desc/hero_bg.webp')] tabV:bg-r tabH:bg-[url('/images/desc/hero_bg.webp')] tabV:bg-[url('/images/desc/hero_bg.webp')] desc:bg-[url('/images/desc/hero_bg.webp')] bg-cover">
       <Container className="relative">
         <h1 className="font-ebSemiBold mobV:pt-[158px] mobH:pt-[116px] tabV:pt-[224px] tabH:pt-[204px] desc:pt-[200px] mobV:mb-[24px] mobH:mb-[0] mobH:leading-[130%] mobV:text-middle mobH:text-middle tabV:text-tall desc:text-mega  tabH:text-tall tabV:text-center tabH:text-center desc:text-center tabV:px-[90px] tabH:px-[250px] desc:px-[250px] desc:mb-[24px] text-white">
           Black Lion Limousine
