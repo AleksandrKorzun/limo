@@ -12,12 +12,12 @@ const SectionHero = () => {
           Black Lion Limousine
           <br /> Your Premier Chicago Transportation
         </h1>
-        <h3 className="font-latoMedium text-small desc:text-medium mobV:mb-[32px] tabV:mb-[40px] mobH:mb-[16px] desc:mb-[50px] tabV:px-[140px] tabH:px-[300px] desc:px-[250px] tabV:text-center tabH:text-center desc:text-center text-white">
+        <h2 className="font-latoMedium text-small desc:text-medium mobV:mb-[32px] tabV:mb-[40px] mobH:mb-[16px] desc:mb-[50px] tabV:px-[140px] tabH:px-[300px] desc:px-[250px] tabV:text-center tabH:text-center desc:text-center text-white">
           Black Lion Limousine is a premier limousine service provider located
           in western suburbs of Chicago. With a commitment to excellence and
           customer satisfaction, we offer a wide range of transportation
           solutions for both corporate and personal needs
-        </h3>
+        </h2>
         <div className="flex justify-center">
           <CustomButton
             text="Book a Transfer"
