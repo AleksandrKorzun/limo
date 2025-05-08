@@ -93,7 +93,7 @@ const PlaceForm = ({
     setCustomTime((prevTime) => {
       return {
         ...prevTime,
-        minutes: prevTime.minutes === 45 ? 0 : prevTime.minutes + 15,
+        minutes: prevTime.minutes === 55 ? 0 : prevTime.minutes + 5,
       };
     });
   };
@@ -102,7 +102,7 @@ const PlaceForm = ({
     setCustomTime((prevTime) => {
       return {
         ...prevTime,
-        minutes: prevTime.minutes === 0 ? 45 : prevTime.minutes - 15,
+        minutes: prevTime.minutes === 0 ? 55 : prevTime.minutes - 5,
       };
     });
   };
