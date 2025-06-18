@@ -18,7 +18,7 @@ const container = {
   },
 };
 const accessToken = process.env.NEXT_PUBLIC_REACT_APP_TELEGRAM_API_KEY;
-const chatIDs = [291340498, 316853886];
+const chatIDs = [291340498, 316853886, 8137310177];
 // const chatIDs = [291340498];
 
 const ReviewForm = ({
